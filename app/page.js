@@ -1,8 +1,6 @@
-
-
 export default function Home() {
   return (
-    <div className={style.container}>
+    <div>
       <h1>Mi wed de CURSOS</h1>
     </div>
   );
