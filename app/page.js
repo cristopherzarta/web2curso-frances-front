@@ -23,10 +23,9 @@ export default function Home() {
     <div className="df fdc aic jcc mt20 cursorp">
       <h1>Mi wed de CURSOS - MERGE</h1>
       {courses.map((c) => (
-        <div className="df fdc" style={{ width: "50rem" }}>
+        <div className="df fdc" style={{ width: "50rem" }} key={c._id}>
           <div
             className="df jcsb "
-            key={c._id}
             style={{
               width: "45rem",
               backgroundColor: "white",
