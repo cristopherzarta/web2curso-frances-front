@@ -1,23 +1,80 @@
+"use client";
+import "./globals.css";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+
 export default function Home() {
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:4000/courses`)
+      .then((res) => res.json())
+      .then(({ ok, data }) => {
+        if (ok) {
+          setCourses(data);
+        }
+      })
+      .catch((err) => {
+        console.log({ err });
+      });
+  }, []);
+
   return (
-    <div className=" bg-blue-400 text-3xl ">
-      <h1>Mi wed de CURSOS</h1>
-      <p>
-        Nació el 23 de octubre de 1940 en la localidad brasileña de Tres
-        Corazones, en el estado Minas Gerais. Pelé es considerado por muchos
-        como el mejor futbolista del siglo. Comenzó a jugar fútbol como se
-        comienza a jugar fútbol en Brasil: en las calles. Jugaba con sus
-        compañeros de escuela o con sus vecinos. Sin embargo, su carrera como
-        futbolista profesional comenzó a los 13 años cuando se integró a los
-        juveniles del Club Atlético de Baurú. Su primer entrenador fue Valdemar
-        de Brito, un futbolista que jugó con la selección nacional brasileña en
-        la Copa Mundial de 1934. Fue De Brito quien llevó a Pelé al equipo
-        Santos de San Pablo; y con el Santos, vino la consagración y los
-        mundiales. En la final del mundial del 58 y con tan sólo 17 años, Pelé
-        fue toda una revelación: dos goles espectaculares del joven futbolista
-        dieron a Brasil un triunfo demoledor de 5 - 2 contra Suecia, el equipo
-        anfitrión.
-      </p>
+    <div className="df fdc aic jcc mt20 cursorp">
+      <h1>Mi wed de CURSOS - MERGE</h1>
+      {courses.map((c) => (
+        <div className="df fdc" style={{ width: "50rem" }} key={c._id}>
+          <div
+            className="df jcsb "
+            style={{
+              width: "45rem",
+              backgroundColor: "white",
+              padding: "0.75 rem",
+              borderRadius: "0.5rem",
+            }}
+          >
+            <div
+              style={{
+                boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
+                marginRight: "1rem",
+              }}
+            >
+              <Image
+                src={c.thumbnail}
+                alt="Picture of the author"
+                width={0.82 * 150}
+                height={150}
+              />
+            </div>
+
+            <div className="df fdc aic jcc" style={{ width: "60%" }}>
+              {" "}
+              <h3 className="cblack" mv5>
+                {c.name}
+              </h3>
+              <h1 className="cgrey m0">
+                Este curso de Frances es ideal para aquellos que siempre han
+                querido aprender la lengua más bella del mundo.
+              </h1>
+            </div>
+          </div>
+          <div
+            className="mt20 br5"
+            style={{
+              overflow: "hidden",
+              height: "28rem",
+              boxShadow: "0 3px 5px rgba(255,255,255,0.2)",
+            }}
+          >
+            <video
+              src={c.videos[0].videoUrl}
+              style={{ width: "100%", height: "100% " }}
+              autoPlay
+              controls
+            ></video>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
