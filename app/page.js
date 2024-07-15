@@ -6,11 +6,13 @@ import CourseVideo from "@/components/CourseVideo";
 import CourseCard from "@/components/CourseCard";
 import Header from "@/components/Header";
 
-const BASE_BACKEND_URL = !!process.env.NEXT_PUBLIC_VERCEL_ENV ? process.env.NEXT_PUBLIC_BASE_BACKEND_URL : "http://localhost:4000";
+const BASE_BACKEND_URL = !!process.env.NEXT_PUBLIC_VERCEL_ENV
+  ? process.env.NEXT_PUBLIC_BASE_BACKEND_URL
+  : "http://localhost:4000";
 
 export default function Home() {
   const [courses, setCourses] = useState([]);
-  console.log({BASE_BACKEND_URL, env: process.env.NEXT_PUBLIC_VERCEL_ENV})
+  console.log({ BASE_BACKEND_URL, env: process.env.NEXT_PUBLIC_VERCEL_ENV });
 
   useEffect(() => {
     fetch(`${BASE_BACKEND_URL}/courses`)
