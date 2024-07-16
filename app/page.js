@@ -42,7 +42,7 @@ export default function Home() {
         {courses.map((c) => (
           <CourseCard course={c} key={c._id} />
         ))}
-        <div></div>
+        
       </div>
     </div>
   );

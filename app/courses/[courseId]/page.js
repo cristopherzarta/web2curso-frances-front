@@ -9,19 +9,21 @@ import { useSearchParams } from "next/navigation";
 import { useParams } from "next/navigation";
 
 const CoursePage = () => {
+  const [course, setCourse] = useState({});
   const params = useParams();
   //console.log(params);
 
-  const course = JSON.parse(localStorage.getItem(params.courseId));
-  console.log({ course });
+  useEffect(() => {
+    const courseFromLS = JSON.parse(localStorage.getItem(params.courseId));
+    setCourse(courseFromLS);
+   
+  }, []);
+
   return (
     <div>
       <Header />
       <div className="mt20">
-        
-        <CourseCard   course={params.courseId}/>
-
-
+        <CourseCard course={params.courseId} />
       </div>
 
       {params.courseId}
