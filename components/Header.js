@@ -2,6 +2,12 @@ import { useRouter } from "next/navigation";
 
 const Header = () => {
   const router = useRouter();
+
+  const handleLogin = () => {
+    fetch(`http://localhost:4000/auth/google`)
+
+
+  }
   return (
     <div
       className="df aic jcsb w100p p5 "
@@ -10,8 +16,8 @@ const Header = () => {
         boxShadow: "0 2px 15px rgba(0,0,0,0.5)",
       }}
     >
-      <h1 className= "cursorp" onClick={() => router.back()}> 🧠 Mi wed de CURSOS - MERGE </h1>
-      <button>Iniciar session </button>
+      <h1 className= "cursorp" onClick={() => router.back()}> 🧠 </h1>
+      <button onClick={handleLogin}>Iniciar session </button>
     </div>
   );
 };
