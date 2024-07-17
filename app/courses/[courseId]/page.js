@@ -1,23 +1,34 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import CourseCard from "../../../components/CourseCard";
-import Header from "@/components/Header";
+import Header from "../../../components/Header";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
-export default function CoursePage({ params }) {
+import { useParams } from "next/navigation";
+
+const CoursePage = () => {
   const [course, setCourse] = useState({});
-  console.log({ params });
+  const params = useParams();
+  //console.log(params);
 
   useEffect(() => {
-    const courseFromLS = JSON.parse(localStorage.getItem("params.courseId"));
+    const courseFromLS = JSON.parse(localStorage.getItem(params.courseId));
     setCourse(courseFromLS);
-    console.log({ courseFromLS });
+   
   }, []);
 
   return (
     <div>
       <Header />
-      <div className="mt20">courseFromLS={params.courseId}</div>
+      <div className="mt20">
+        <CourseCard course={params.courseId} />
+      </div>
+
+      {params.courseId}
     </div>
   );
-}
+};
+
+export default CoursePage;

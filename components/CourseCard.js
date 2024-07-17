@@ -29,7 +29,7 @@ const CourseCard = ({ course }) => {
             alt="Picture of the author"
             width={0.82 * 150}
             height={150}
-            style={{ width: "auto", height: "auto" }}
+           
           />
         </div>
 
