@@ -1,15 +1,42 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../layout";
 
 const profile = () => {
+  const { state, dispatch} = useContext(AuthContext);
+ 
+
   const searchParams = useSearchParams();
-  const token = searchParams.get("jwt");
+  const token = searchParams.get("login_info");
 
-  console.log(searchParams);
+  const router = useRouter();
+  
+  //console.log(router)
 
-  return <p>parameter 1 value is {token}</p>;
+  // console.log(searchParams);
+  //console.log(login_info);
+
+  useEffect(() => {
+    //console.log({ jwt: searchParams.get("jwt") });
+
+
+    if (searchParams.get("login_info")) {
+
+      const login_info = JSON.parse(searchParams.get("login_info"));
+    
+    dispatch (
+      {
+        type: 'LOGIN',
+         payload: login_info 
+        }
+      )
+      router.replace("/profile");
+    }
+  }, [searchParams.get("login_info")]);
+  return <p>parameter 1 value is </p>;
 };
 
 export default profile;
