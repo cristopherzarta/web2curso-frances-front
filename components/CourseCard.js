@@ -9,7 +9,7 @@ const CourseCard = ({ course }) => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/courses/${_id}`);
+    router.push(`/courses/study/${_id}`);
     localStorage.setItem(_id, JSON.stringify(course));
   };
 

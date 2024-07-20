@@ -6,10 +6,7 @@ import CourseVideo from "@/components/CourseVideo";
 import CourseCard from "@/components/CourseCard";
 import Header from "@/components/Header";
 import { AuthContext } from "./layout";
-
-const BASE_BACKEND_URL = !!process.env.NEXT_PUBLIC_VERCEL_ENV
-  ? process.env.NEXT_PUBLIC_BASE_BACKEND_URL
-  : "http://localhost:4000";
+import { config } from "@/constans/config";
 
 export default function Home() {
   const [courses, setCourses] = useState([]);
@@ -23,7 +20,7 @@ export default function Home() {
   useEffect(() => {
     //if (!!jwt)
        {
-      fetch(`${BASE_BACKEND_URL}/courses`)
+      fetch(`${config.BASE_BACKEND_URL}/courses`)
         .then((res) => res.json())
         .then(({ ok, data }) => {
           if (ok) {

@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../layout";
+import Header from "@/components/Header";
 
 const profile = () => {
   const { state, dispatch} = useContext(AuthContext);
@@ -36,7 +37,11 @@ const profile = () => {
       router.replace("/profile");
     }
   }, [searchParams.get("login_info")]);
-  return <p>parameter 1 value is </p>;
+  return  ( <>
+  <Header />
+  <div>StudyPage: {params.studyId}</div>
+</>
+  )
 };
 
 export default profile;

@@ -29,8 +29,9 @@ const Header = () => {
         backgroundColor: "var(--blackDark)",
         boxShadow: "0 2px 15px rgba(0,0,0,0.5)",
       }}
+   
     >
-      <h1 className= "cursorp " onClick={() => router.back()}> 🧠 </h1>
+      <h1 className= "cursorp " onClick={() => router.push('/')}> 🧠 </h1>
   {!isAuthenticated && <button onClick={handleLogin}>Iniciar sesion </button>}
   {isAuthenticated && <button onClick={handleLogout}>Cerrar sesion </button>}
     </div>
