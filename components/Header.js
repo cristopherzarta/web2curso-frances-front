@@ -19,7 +19,7 @@ const Header = () => {
   }
 
   const handleLogout = () => {
-    dispatch ({type: 'LOGOUT'})
+    dispatch ({ type: 'LOGOUT' })
   }
 
   

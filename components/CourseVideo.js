@@ -29,7 +29,7 @@ const CourseVideo = ({
           <u
             className="cursorp"
             onClick={() => {
-              window.location = `http://localhost:4000/auth/google`;
+              window.location = `http://localhost:4000/auth/google`
             }}
           >
             iniciar session
@@ -49,7 +49,7 @@ const CourseVideo = ({
             adquirir el curso
           </u>
         </p>
-      )}
+      )};
     </div>
   );
 };
