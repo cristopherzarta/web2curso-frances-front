@@ -19,7 +19,7 @@ export default function Home() {
 
   useEffect(() => {
     //if (!!jwt)
-       {
+       
       fetch(`${config.BASE_BACKEND_URL}/courses`)
         .then((res) => res.json())
         .then(({ ok, data }) => {
@@ -30,7 +30,7 @@ export default function Home() {
         .catch((err) => {
           console.log({ err });
         });
-    }
+    
   }, []);
 
   return (

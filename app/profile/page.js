@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlay, faLock } from '@fortawesome/free-solid-svg-icons'
 
 
-const profile = () => {
+export default function Profile () {
   const { state, dispatch} = useContext(AuthContext);
  
 
@@ -39,14 +39,14 @@ const profile = () => {
       )
       router.replace("/profile");
     }
-  }, [searchParams.get("login_info")]);
+  }, [searchParams.get?.login_info])
   return  ( <>
   <Header />
   <div>PROFILE</div>
-  <FontAwesomeIcon icon={faCirclePlay}/>
+  <FontAwesomeIcon icon={faCirclePlay} className='cviolet mh5'/>
   <FontAwesomeIcon icon={faLock} />
 </>
   )
 };
 
-export default profile;
+
