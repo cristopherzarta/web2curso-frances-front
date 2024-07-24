@@ -6,6 +6,12 @@
   --black: #222;
   --blackDark: #111;
   --grey: rgb(93, 91, 91);
+  --violet: #a20dff;
+  --violeteDark: #8d0bd9;
+  --red: #ff0d0d;
+  --redDark: #8d0f0f;
+  --yellow: #ffff05;
+  --yellowDark: #b8b808;
 }
 
 html,
@@ -58,11 +64,17 @@ a {
 .br20 {
   border-radius: 2rem;
 }
+.ml5 {
+  margin-left: 0.5rem;
+}
+.mr5 {
+  margin-bottom: 0.5rem;
+}
 .m0 {
   margin: 0;
 }
 .mb5 {
-  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
 }
 .mt5 {
   margin-top: 0.5rem;
@@ -77,10 +89,23 @@ a {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
+.mh5 {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
 
-.tdu { text-decoration: underline;}
-.tac { text-align: center;}
-.p5 { padding: 0.5rem;}
+.tdu {
+  text-decoration: underline;
+}
+.tac {
+  text-align: center;
+}
+.p5 {
+  padding: 0.5rem;
+}
+.p10 {
+  padding: 1rem;
+}
 
 .cblack {
   color: var(--grey);
@@ -88,6 +113,18 @@ a {
 
 .cgrey {
   color: var(--black);
+}
+
+.cred {
+  color: var(--red);
+}
+
+.cviolet {
+  color: var(--violet);
+}
+
+.cyellow {
+  color: var(--yellow);
 }
 
 @media (prefers-color-scheme: dark) {

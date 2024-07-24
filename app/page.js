@@ -1,28 +1,36 @@
 "use client";
 import "./globals.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import CourseVideo from "@/components/CourseVideo";
 import CourseCard from "@/components/CourseCard";
 import Header from "@/components/Header";
-
-const BASE_BACKEND_URL = !!process.env.NEXT_PUBLIC_VERCEL_ENV ? process.env.NEXT_PUBLIC_BASE_BACKEND_URL : "http://localhost:4000";
+import { AuthContext } from "./layout";
+import { config } from "@/constans/config";
 
 export default function Home() {
   const [courses, setCourses] = useState([]);
-  console.log({BASE_BACKEND_URL, env: process.env.NEXT_PUBLIC_VERCEL_ENV});
+ /* const {
+    state: { jwt },
+  } = useContext(AuthContext);
+  console.log({ jwt });*/
+
+  //console.log({BASE_BACKEND_URL, env: process.env.NEXT_PUBLIC_VERCEL_ENV});
 
   useEffect(() => {
-    fetch(`${BASE_BACKEND_URL}/courses`)
-      .then((res) => res.json())
-      .then(({ ok, data }) => {
-        if (ok) {
-          setCourses(data);
-        }
-      })
-      .catch((err) => {
-        console.log({ err });
-      });
+    //if (!!jwt)
+       
+      fetch(`${config.BASE_BACKEND_URL}/courses`)
+        .then((res) => res.json())
+        .then(({ ok, data }) => {
+          if (ok) {
+            setCourses(data);
+          }
+        })
+        .catch((err) => {
+          console.log({ err });
+        });
+    
   }, []);
 
   return (
@@ -42,7 +50,6 @@ export default function Home() {
         {courses.map((c) => (
           <CourseCard course={c} key={c._id} />
         ))}
-        
       </div>
     </div>
   );

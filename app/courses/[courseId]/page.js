@@ -11,7 +11,7 @@ import { useParams } from "next/navigation";
 const CoursePage = () => {
   const [course, setCourse] = useState({});
   const params = useParams();
-  //console.log(params);
+  console.log(params);
 
   useEffect(() => {
     const courseFromLS = JSON.parse(localStorage.getItem(params.courseId));
