@@ -3,6 +3,9 @@
 import { useReducer, createContext, useEffect } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
 
 export const AuthContext = createContext();
 
@@ -13,13 +16,14 @@ export const AuthContext = createContext();
 }; */
 
 const initialState = {
+  alreadyChecked: false,
   isAuthenticated: false,
   user: null,
   jwt: null,
 };
 
 const reducer = (state, action) => {
-  console.log({ action });
+  //console.log({ action });
   switch (action.type) {
     case "LOGIN":
       localStorage.setItem("user", JSON.stringify(action.payload.user));
@@ -31,7 +35,8 @@ const reducer = (state, action) => {
         jwt: action.payload.jwt,
       };
     case "LOGOUT":
-      localStorage.clear();
+      localStorage.clear()
+      window.location = "/"
       return {
         ...state,
         isAuthenticated: false,
@@ -40,7 +45,8 @@ const reducer = (state, action) => {
     case "SET_LOGGED_USER":
       return {
         ...state,
-        isAuthenticated: true,
+        alreadyChecked: action.payload.isAuthenticated,
+        isAuthenticated: action.payload.isAuthenticated,
         user: action.payload.user,
         jwt: action.payload.jwt,
       };
@@ -55,12 +61,20 @@ function RootLayout({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
+    const user = JSON.parse(localStorage.getItem("user"));
     const jwt = localStorage.getItem("jwt");
-    console.log({ jwt });
+   
 
     if (!!jwt || !!user) {
-      dispatch({ type: "SET_LOGGED_USER", payload: { user, jwt } });
+      dispatch({ type: "SET_LOGGED_USER", payload: { user, jwt, isAuthenticated: true, alreadyChecked: true } });
+    } else {
+      dispatch({ type: "SET_LOGGED_USER", payload: { 
+        user:null,
+         jwt: null,
+         isAuthenticated: false,
+          alreadyChecked: true, 
+        },
+         });
     }
   }, []);
 

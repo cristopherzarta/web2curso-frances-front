@@ -1,14 +1,20 @@
 "use client";
 
+import { AuthContext } from "@/app/layout";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import Swal from "sweetalert2";
 
 const CourseCard = ({ course }) => {
+
   const { thumbnail, name, description, _id } = course;
 
   const router = useRouter();
 
   const handleClick = () => {
+   
+    
     router.push(`/courses/study/${_id}`);
     localStorage.setItem(_id, JSON.stringify(course));
   };

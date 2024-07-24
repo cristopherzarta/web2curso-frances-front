@@ -5,6 +5,9 @@ import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../layout";
 import Header from "@/components/Header";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCirclePlay, faLock } from '@fortawesome/free-solid-svg-icons'
+
 
 const profile = () => {
   const { state, dispatch} = useContext(AuthContext);
@@ -39,7 +42,9 @@ const profile = () => {
   }, [searchParams.get("login_info")]);
   return  ( <>
   <Header />
-  <div>StudyPage: {params.studyId}</div>
+  <div>PROFILE</div>
+  <FontAwesomeIcon icon={faCirclePlay}/>
+  <FontAwesomeIcon icon={faLock} />
 </>
   )
 };

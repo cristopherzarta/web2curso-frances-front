@@ -3,12 +3,13 @@
 import { AuthContext } from "@/app/layout";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
+import Button from "./ui/Button";
 
 const Header = () => {
 
   const { state: { isAuthenticated } , dispatch} = useContext(AuthContext);
 
-  console.log({isAuthenticated})
+
  
 
   const router = useRouter();
@@ -23,18 +24,26 @@ const Header = () => {
 
   
   return (
+    <>
     <div
-      className="df aic jcsb w100p p5 "
-      style={{
-        backgroundColor: "var(--blackDark)",
-        boxShadow: "0 2px 15px rgba(0,0,0,0.5)",
-      }}
-   
+    className="df aic jcsb w100p p5 "
+    style={{
+      backgroundColor: "var(--blackDark)",
+      boxShadow: "0 2px 15px rgba(0,0,0,0.5)",
+    }}
+    
     >
       <h1 className= "cursorp " onClick={() => router.push('/')}> 🧠 </h1>
-  {!isAuthenticated && <button onClick={handleLogin}>Iniciar sesion </button>}
-  {isAuthenticated && <button onClick={handleLogout}>Cerrar sesion </button>}
+  {!isAuthenticated  && (
+<Button text={'Iniciar session'} onClick={handleLogin} color= "violet"/>
+  )}
+  {isAuthenticated && (
+  
+<Button text={'Cerrar session'} onClick={handleLogout} color= "violet"/>
+)}
     </div>
+   
+</>
   );
 };
 
