@@ -57,6 +57,9 @@ a {
 .w100p {
   width: 100%;
 }
+.br2 {
+  border-radius: 0.2rem;
+}
 .br5 {
   border-radius: 0.5rem;
 }
