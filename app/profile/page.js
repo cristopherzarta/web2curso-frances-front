@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../layout";
 import Header from "@/components/Header";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCirclePlay, faLock } from "@fortawesome/free-solid-svg-icons";
 
 const Profile = () => {
   const { state, dispatch } = useContext(AuthContext);
@@ -38,8 +36,6 @@ const Profile = () => {
     <>
       <Header />
       <div>PROFILE</div>
-      <FontAwesomeIcon icon={faCirclePlay} className="cviolet mh5" />
-      <FontAwesomeIcon icon={faLock} />
     </>
   );
 };
