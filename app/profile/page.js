@@ -33,10 +33,10 @@ const Profile = () => {
     }
   }, [searchParams.get?.login_info]);
   return (
-    <>
+    <Suspense>
       <Header />
       <div>PROFILE</div>
-    </>
+    </Suspense>
   );
 };
 
