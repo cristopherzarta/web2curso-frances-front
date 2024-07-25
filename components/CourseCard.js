@@ -39,7 +39,7 @@ const CourseCard = ({ course }) => {
           />
         </div>
 
-        <div className="df fdc card-body ">
+        <div className="df fdc card-body mt5">
           <h3 className="cblack">{name}</h3>
           <h1 className="cgrey m0">{description}</h1>
         </div>
@@ -47,33 +47,25 @@ const CourseCard = ({ course }) => {
 
       <style jsx>{`
         .card-container {
-          background-color: white;
+          flex-direction: column;
+          background-color: white;          
+          width: ${0.82 * 150 + "px"};
           padding: 0.75rem;
           border-radius: 0.5rem;
           max-width: 50rem;
           transition: transform 0.3s ease;
         }
 
+        .card-body {
+            width: 100%;
+          }
+       
         .card-container:hover {
           transform: scale(1.03);
           box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
         }
 
-        .card-body {
-          width: 60%;
-        }
-
-        @media (max-width: 800px) {
-          .card-container {
-            flex-direction: column;
-            width: ${0.82 * 150 + "px"};
-            margin: 0 auto;
-          }
-
-          .card-body {
-            width: 100%;
-          }
-        }
+       
       `}</style>
     </>
   );

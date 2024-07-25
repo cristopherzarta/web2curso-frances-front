@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useContext, useEffect } from "react";
+import { Suspense, useContext, useEffect } from "react";
 import { AuthContext } from "../layout";
 import Header from "@/components/Header";
 
