@@ -1,4 +1,5 @@
 import { config } from "@/constans/config";
+import { useRouter } from "next/navigation";
 
 const CourseVideo = ({
   videoUrl,
@@ -7,6 +8,9 @@ const CourseVideo = ({
   isFree,
 }) => {
   const couldWatch = (isAuthenticated && hasBoughtTheCourse) || isFree;
+
+  const router = useRouter()
+
 
   return (
     <div
@@ -30,9 +34,7 @@ const CourseVideo = ({
           Para visualizar el curso primero deberias{" "}
           <u
             className="cursorp"
-            onClick={() => {
-              window.location = `${config.BASE_BACKEND_URL}/auth/google`
-            }}
+            onClick={() => router.push("/login")}
           >
             iniciar sesión
           </u>
