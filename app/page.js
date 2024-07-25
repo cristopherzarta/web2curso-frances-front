@@ -10,7 +10,7 @@ import { config } from "@/constans/config";
 
 export default function Home() {
   const [courses, setCourses] = useState([]);
- /* const {
+  /* const {
     state: { jwt },
   } = useContext(AuthContext);
   console.log({ jwt });*/
@@ -19,18 +19,17 @@ export default function Home() {
 
   useEffect(() => {
     //if (!!jwt)
-       
-      fetch(`${config.BASE_BACKEND_URL}/courses`)
-        .then((res) => res.json())
-        .then(({ ok, data }) => {
-          if (ok) {
-            setCourses(data);
-          }
-        })
-        .catch((err) => {
-          console.log({ err });
-        });
-    
+
+    fetch(`${config.BASE_BACKEND_URL}/courses`)
+      .then((res) => res.json())
+      .then(({ ok, data }) => {
+        if (ok) {
+          setCourses(data);
+        }
+      })
+      .catch((err) => {
+        console.log({ err });
+      });
   }, []);
 
   return (
@@ -39,7 +38,7 @@ export default function Home() {
       <div className="df fdc p5 tac mb5 ">
         <h1 style={{ lineHeight: "2rem" }}>
           &ldquo;Vive como si fueras a morir mañana, aprende como si fueras a
-          vivir por siempre.&ldquo;
+          vivir por siempre.&rdquo;
         </h1>
         <span>- Mahatma Gandhi</span>
       </div>

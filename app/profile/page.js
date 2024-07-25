@@ -8,7 +8,7 @@ import Header from "@/components/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlay, faLock } from "@fortawesome/free-solid-svg-icons";
 
-const profile = () => {
+const Profile = () => {
   const { state, dispatch } = useContext(AuthContext);
 
   const searchParams = useSearchParams();
@@ -44,4 +44,4 @@ const profile = () => {
   );
 };
 
-export default profile;
+export default Profile;
