@@ -1,3 +1,5 @@
+import { config } from "@/constans/config";
+
 const CourseVideo = ({
   videoUrl,
   isAuthenticated,
@@ -29,10 +31,10 @@ const CourseVideo = ({
           <u
             className="cursorp"
             onClick={() => {
-              window.location = `http://localhost:4000/auth/google`
+              window.location = `${config.BASE_BACKEND_URL}/auth/google`
             }}
           >
-            iniciar session
+            iniciar sesión
           </u>
         </p>
       )}
