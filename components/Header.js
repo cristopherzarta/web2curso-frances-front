@@ -13,8 +13,6 @@ const Header = ({ isLoginPage }) => {
   } = useContext(AuthContext);
 
   const router = useRouter()
-  
-
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });

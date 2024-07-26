@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 const CourseCard = ({ course }) => {
 
-  const { thumbnail, name, description, _id } = course;
+  const { thumbnail, name, description, _id } = course
 
   const router = useRouter();
 
