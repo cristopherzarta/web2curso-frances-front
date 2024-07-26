@@ -45,7 +45,7 @@ const reducer = (state, action) => {
     case "SET_LOGGED_USER":
       return {
         ...state,
-        alreadyChecked: action.payload.isAuthenticated,
+        alreadyChecked: action.payload.alreadyChecked,
         isAuthenticated: action.payload.isAuthenticated,
         user: action.payload.user,
         jwt: action.payload.jwt,
@@ -68,11 +68,10 @@ function RootLayout({ children }) {
     if (!!jwt || !!user) {
       dispatch({ type: "SET_LOGGED_USER", payload: { user, jwt, isAuthenticated: true, alreadyChecked: true } });
     } else {
-      dispatch({ type: "SET_LOGGED_USER", payload: { 
-        user:null,
-         jwt: null,
+      dispatch({ type: "SET_LOGGED_USER", payload: { user:null,
+         jwt: null, 
          isAuthenticated: false,
-          alreadyChecked: true, 
+         alreadyChecked: true, 
         },
          });
     }

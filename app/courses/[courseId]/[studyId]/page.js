@@ -28,6 +28,7 @@ const StudyPage = () => {
   useEffect(() => {
     if (!!params.studyId && alreadyChecked) {
       console.log("FETCHING", { alreadyChecked, user });
+
       const queryParams = !!user ? `?user_id${user.sub}` : "";
       fetch(
         `${config.BASE_BACKEND_URL}/courses/${params.studyId} ${queryParams}`
@@ -54,12 +55,13 @@ const StudyPage = () => {
       <div className="df aic">
         <div
           className="df fdc "
-          style={{ height: "100vh", backgroundColor: "var(--blackDark)" }}
+          style={{ height: "100vh", backgroundColor: "var(--bluekDark)" }}
         >
           <h3 className="p10">
-            SECCIONES del CURSO StudyPage: {params.studyId}
-          </h3>
+            {" "}
+            SECCIONES del CURSO  </h3>
           <div className="df fdc ">
+            {" "}
             {course?.sections?.map((section) => (
               <div className="df fdc" key={section.name}>
                 <div

@@ -5,6 +5,8 @@
 :root {
   --black: #222;
   --blackDark: #111;
+  --blue: #4c00ff;
+  --blueDark: #04019e;
   --grey: rgb(93, 91, 91);
   --violet: #a20dff;
   --violeteDark: #8d0bd9;
@@ -111,11 +113,15 @@ a {
 }
 
 .cblack {
-  color: var(--grey);
+  color: var(--black);
+}
+
+.cblue {
+  color: var(--blue);
 }
 
 .cgrey {
-  color: var(--black);
+  color: var(--grey);
 }
 
 .cred {

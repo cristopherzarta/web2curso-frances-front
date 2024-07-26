@@ -11,8 +11,7 @@ const Button = ({ text, color, onClick }) => {
         cursor: pointer;
       }
 
-      button:hover 
-      {
+      button:hover {
         
        background-color: var(--${color}Dark);
       }
