@@ -18,8 +18,8 @@ const CourseVideo = ({
         overflow: "hidden",
         height: "28rem",
         boxShadow: "0 3px 5px rgba(255,255,255,0.2)",
-      }}
-    >
+      }}>
+
       {couldWatch && (
         <video
           src={videoUrl}
@@ -30,7 +30,7 @@ const CourseVideo = ({
       {!couldWatch && !isAuthenticated && (
         <p>
           Para visualizar el curso primero deberias{" "}
-          <u className="cursorp" onClick={() => router.push("/login")}>
+          <u className="cursorp" onClick={ () => router.push("/login")}>
             iniciar sesión
           </u>
         </p>

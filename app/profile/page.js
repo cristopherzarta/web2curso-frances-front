@@ -32,10 +32,13 @@ const Profile = () => {
       router.replace("/profile");
     }
   }, [searchParams.get?.login_info]);
+
   return (
+
+    
     <Suspense>
       <Header />
-      <div>PROFILE</div>
+         <div>PROFILE</div>
     </Suspense>
   );
 };
