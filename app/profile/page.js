@@ -34,9 +34,9 @@ export default function Profile() {
   }, [searchParams.get?.login_info]);
 
   return (
-    <Suspense>
+    <div>
       <Header />
       <div>PROFILE</div>
-    </Suspense>
+    </div>
   );
 }
