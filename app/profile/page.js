@@ -35,7 +35,6 @@ export default function Profile() {
 
   return (
     <div>
-      <Header />
       <div>PROFILE</div>
     </div>
   );
