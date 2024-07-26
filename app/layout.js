@@ -58,6 +58,7 @@ const reducer = (state, action) => {
 const inter = Inter({ subsets: ["latin"] });
 
 function RootLayout({ children }) {
+  
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
