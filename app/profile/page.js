@@ -16,7 +16,7 @@ export default function Profile() {
 
   //console.log(router)
 
-  // console.log(searchParams);
+  console.log(searchParams);
   //console.log(login_info);
 
   useEffect(() => {
@@ -34,8 +34,9 @@ export default function Profile() {
   }, [searchParams.get?.login_info]);
 
   return (
-    <div>
+    <Suspense>
+      <Header/>
       <div>PROFILE</div>
-    </div>
+    </Suspense>
   );
 }
