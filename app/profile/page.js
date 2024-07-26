@@ -14,9 +14,9 @@ export default function Profile() {
 
   const router = useRouter();
 
-  //console.log(router)
+  //console.log(token)
 
-  console.log(searchParams);
+  //console.log(searchParams);
   //console.log(login_info);
 
   useEffect(() => {
@@ -36,6 +36,7 @@ export default function Profile() {
   return (
     <Suspense>
       <Header/>
+      <token />
       <div>PROFILE</div>
     </Suspense>
   );
