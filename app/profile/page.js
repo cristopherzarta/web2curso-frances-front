@@ -6,8 +6,7 @@ import { Suspense, useContext, useEffect } from "react";
 import { AuthContext } from "../layout";
 import Header from "@/components/Header";
 
-export default function Profile () {
-  
+export default function Profile() {
   const { state, dispatch } = useContext(AuthContext);
 
   const searchParams = useSearchParams();
@@ -40,6 +39,4 @@ export default function Profile () {
       <div>PROFILE</div>
     </Suspense>
   );
-};
-
-
+}
