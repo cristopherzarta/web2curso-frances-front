@@ -1,12 +1,8 @@
-
-
 const Button = ({ text, color, onClick }) => {
-
-
-    return (
-        <>
-    <button onClick={ onClick }>{text} </button>
-        <style jsx>{`
+  return (
+    <>
+      <button onClick={onClick}>{text} </button>
+      <style jsx>{`
             button {
         padding: 0.5rem;
         background-color: var(--${color});
@@ -15,17 +11,15 @@ const Button = ({ text, color, onClick }) => {
         cursor: pointer;
       }
 
-      button:hover{
-        background-color:  var(--${color}Dark);
+      button:hover 
+      {
+        
+       background-color: var(--${color}Dark);
       }
       
       `}</style>
-
-
- 
-    
     </>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

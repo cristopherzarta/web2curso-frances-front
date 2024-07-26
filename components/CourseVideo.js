@@ -9,8 +9,7 @@ const CourseVideo = ({
 }) => {
   const couldWatch = (isAuthenticated && hasBoughtTheCourse) || isFree;
 
-  const router = useRouter()
-
+  const router = useRouter();
 
   return (
     <div
@@ -28,19 +27,14 @@ const CourseVideo = ({
           controls
         ></video>
       )}
-
       {!couldWatch && !isAuthenticated && (
         <p>
           Para visualizar el curso primero deberias{" "}
-          <u
-            className="cursorp"
-            onClick={() => router.push("/login")}
-          >
+          <u className="cursorp" onClick={() => router.push("/login")}>
             iniciar sesión
           </u>
         </p>
       )}
-
       {!couldWatch && isAuthenticated && (
         <p>
           Para visualizar este video primero deberias{" "}
@@ -53,7 +47,8 @@ const CourseVideo = ({
             adquirir el curso
           </u>
         </p>
-      )};
+      )}
+      ;
     </div>
   );
 };
