@@ -22,8 +22,8 @@ export default function Profile() {
   useEffect(() => {
     //console.log({ jwt: searchParams.get("jwt") });
 
-    if (searchParams.get("login_info")) {
-      const login_info = JSON.parse(searchParams.get("login_info"));
+    if (token) {
+      const login_info = JSON.parse(token);
 
       dispatch({
         type: "LOGIN",
@@ -32,7 +32,7 @@ export default function Profile() {
       router.replace("/profile");
     }
   }, [searchParams.get?.login_info]);
-
+ //console.log("login_info")
   return (
     <Suspense>
       <Header/>
