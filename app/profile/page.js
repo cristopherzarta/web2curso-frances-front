@@ -32,12 +32,11 @@ export default function Profile() {
       router.replace("/profile");
     }
   }, [searchParams.get?.login_info]);
- //console.log("login_info")
+  //console.log("login_info")
   return (
-    <Suspense>
-      <Header/>
-      <token />
+    <>
+      <Header />
       <div>PROFILE</div>
-    </Suspense>
+    </>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducer, createContext, useEffect } from "react";
+import { useReducer, createContext, useEffect, Suspense } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -35,8 +35,8 @@ const reducer = (state, action) => {
         jwt: action.payload.jwt,
       };
     case "LOGOUT":
-      localStorage.clear()
-      window.location = "/"
+      localStorage.clear();
+      window.location = "/";
       return {
         ...state,
         isAuthenticated: false,
@@ -58,30 +58,36 @@ const reducer = (state, action) => {
 const inter = Inter({ subsets: ["latin"] });
 
 function RootLayout({ children }) {
-  
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     const jwt = localStorage.getItem("jwt");
-   
 
     if (!!jwt || !!user) {
-      dispatch({ type: "SET_LOGGED_USER", payload: { user, jwt, isAuthenticated: true, alreadyChecked: true } });
+      dispatch({
+        type: "SET_LOGGED_USER",
+        payload: { user, jwt, isAuthenticated: true, alreadyChecked: true },
+      });
     } else {
-      dispatch({ type: "SET_LOGGED_USER", payload: { user:null,
-         jwt: null, 
-         isAuthenticated: false,
-         alreadyChecked: true, 
+      dispatch({
+        type: "SET_LOGGED_USER",
+        payload: {
+          user: null,
+          jwt: null,
+          isAuthenticated: false,
+          alreadyChecked: true,
         },
-         });
+      });
     }
   }, []);
 
   return (
     <html lang="en">
       <AuthContext.Provider value={{ state, dispatch }}>
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <Suspense>{children}</Suspense>
+        </body>
       </AuthContext.Provider>
     </html>
   );
