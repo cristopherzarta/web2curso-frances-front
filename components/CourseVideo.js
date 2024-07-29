@@ -12,8 +12,7 @@ const CourseVideo = ({
   const router = useRouter();
 
   return (
-    <div
-      className="df aic jcc mt20 br5"
+    <div className="df aic jcc mt20 br5"
       style={{
         overflow: "hidden",
         height: "28rem",
@@ -23,7 +22,7 @@ const CourseVideo = ({
       {couldWatch && (
         <video
           src={videoUrl}
-          style={{ width: "100%", height: "100% " }}
+          style={{ width: "100%", height: "100%" }}
           controls
         ></video>
       )}
