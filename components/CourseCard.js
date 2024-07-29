@@ -21,7 +21,7 @@ const CourseCard = ({ course }) => {
 
   return (
     <>
-      <div className="df jcsb cursorp card-container " onClick={handleClick}>
+      <div className="df jcsb cursorp card-container" onClick={handleClick}>
         <div
           style={{
             boxShadow: "0 2px 5px rgba(0,0,0,0.2)",

@@ -28,7 +28,7 @@ const Header = ({ isLoginPage }) => {
           boxShadow: "0 2px 15px rgba(0,0,0,0.5)",
         }}
       >
-        <h1 className="cursorp " onClick={() => router.push("/")}>
+        <h1 className="cursorp" onClick={() => router.push("/")}>
            🧠 Feed Him Well
         </h1>
         {(!isAuthenticated && !isLoginPage) && (
