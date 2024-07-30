@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --white: #fcfcfc;;
   --black: #222;
   --blackDark: #111;
   --blue: #4c00ff;
@@ -35,6 +36,8 @@ a {
 .cursorp {
   cursor: pointer;
 }
+.posr { position: relative }
+
 
 .df {
   display: flex;
@@ -116,6 +119,10 @@ a {
   color: var(--black);
 }
 
+.cwhite {
+
+  color: var(--white)
+}
 .cblue {
   color: var(--blue);
 }

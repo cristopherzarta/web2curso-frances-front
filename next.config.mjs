@@ -2,11 +2,16 @@
 //const ContentSecPolicy = `default-src 'self' ka-f.fontawesome.com localhost:4000 web-curso-frances.azurewebsites.net webcursosfrances.blob.core.windows.net; script-src 'self' 'unsafe-eval' kit.fontawesome.com; style-src 'self' 'unsafe-inline' *.fontawesome.com fonts.googleapis.com; font-src 'self' fonts.googleapis.com ka-f.fontawesome.com;  kit.fontawesome.com; img-src 'self' data:`;
 
 const nextConfig = {
-  reacStrictMode: true,
-  swcMinify: true,
   images: {
-    domains: ["webcursosfrances.blob.core.windows.net"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "webcursosfrances.blob.core.windows.net",
+        pathname: "**",
+      },
+    ],
   },
+
 
   /*async headers() {
     return [
