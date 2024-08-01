@@ -1,18 +1,40 @@
 import { config } from "@/constans/config";
 import { useRouter } from "next/navigation";
+import PayPalButtons from "./ui/PayPalButtons";
+import { isPast } from "date-fns";
 
 const CourseVideo = ({
   videoUrl,
   isAuthenticated,
   hasBoughtTheCourse,
+  howManySales,
   isFree,
+  courseId,
+  coursePrice,
+  setCourse,
 }) => {
   const couldWatch = (isAuthenticated && hasBoughtTheCourse) || isFree;
 
   const router = useRouter();
 
+ console.log({ howManySales });
+ 
+  const today = Date.now();
+  let price = howManySales < 25 
+  ? (coursePrice * 0.3).toFixed(0) 
+  : (coursePrice * 0.7).toFixed(0)
+const offerExpirationDate = new Date(2024, 9, 31, 17, 12)
+  
+if (isPast(offerExpirationDate)) {
+  price = coursePrice
+}
+//console.log({ 
+    //isPast: isPast(new Date(2024, 6, 31, 17, 12)), 
+    //date: new Date(2024, 6, 31, 17, 12)  });
+
   return (
-    <div className="df aic jcc mt20 br5"
+    <div
+      className="df aic jcc mt20 br5"
       style={{
         overflow: "hidden",
         height: "28rem",
@@ -35,17 +57,14 @@ const CourseVideo = ({
         </p>
       )}
       {!couldWatch && isAuthenticated && (
-        <p>
-          Para visualizar este video primero deberias{" "}
-          <u
-            className="cursorp"
-            onClick={() => {
-              // TO DO implimentar contratacion del curso
-            }}
-          >
-            adquirir el curso
-          </u>
-        </p>
+        <div className=" ">
+          <p> Para visualizar este video primero deberias adquirir el curso </p>
+          <PayPalButtons
+           price={price} 
+           courseId={courseId} 
+           setCourse={setCourse}
+           />
+        </div>
       )}
       ;
     </div>

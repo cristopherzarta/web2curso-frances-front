@@ -37,6 +37,9 @@ export default function Profile() {
     <>
       <Header />
       <div>PROFILE</div>
+
+     
+
     </>
   );
 }

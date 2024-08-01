@@ -1,4 +1,5 @@
 "use client";
+
 import "./globals.css";
 import { useContext, useEffect, useState } from "react";
 
@@ -7,6 +8,9 @@ import CourseCard from "@/components/CourseCard";
 import Header from "@/components/Header";
 import { AuthContext } from "./layout";
 import { config } from "@/constans/config";
+import PayPalButtons from "@/components/ui/PayPalButtons";
+
+
 
 export default function Home() {
   const [courses, setCourses] = useState([]);
@@ -50,6 +54,7 @@ export default function Home() {
           <CourseCard course={c} key={c._id} />
         ))}
       </div>
+      
     </div>
   );
 }
