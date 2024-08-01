@@ -33,12 +33,12 @@ const Header = ({ isLoginPage }) => {
         </h1>
         {(!isAuthenticated && !isLoginPage) && (
           <Button 
-          text="Iniciar session" 
+          text="Iniciar sesión" 
           onClick={() => router.push("/login")} 
           color="violet" />
         )}
         {isAuthenticated && (
-          <Button text="Cerrar session" onClick={handleLogout} color="violet" />
+          <Button text="Cerrar sesión" onClick={handleLogout} color="violet" />
         )}
       </div>
     </>
