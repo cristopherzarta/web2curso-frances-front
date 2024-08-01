@@ -155,11 +155,3 @@ a {
   color: var(--yellow);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    background: var(--black);
-  }
-}
