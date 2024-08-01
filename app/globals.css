@@ -11,6 +11,8 @@
   --grey: rgb(93, 91, 91);
   --violet: #a20dff;
   --violeteDark: #8d0bd9;
+  --green: #0dff2d;
+  --greenDark: #1d8608;
   --red: #ff0d0d;
   --redDark: #8d0f0f;
   --yellow: #ffff05;
@@ -81,8 +83,11 @@ a {
 .m0 {
   margin: 0;
 }
+.mb20 {
+  margin-bottom: 2rem;
+}
 .mb5 {
-  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 .mt5 {
   margin-top: 0.5rem;
@@ -114,6 +119,9 @@ a {
 .p10 {
   padding: 1rem;
 }
+.p10 {
+  padding: 1rem;
+}
 
 .cblack {
   color: var(--black);
@@ -137,6 +145,10 @@ a {
 
 .cviolet {
   color: var(--violet);
+}
+
+.cgreen {
+  color: var(--green);
 }
 
 .cyellow {
