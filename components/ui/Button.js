@@ -3,19 +3,18 @@ const Button = ({ text, color, onClick }) => {
     <>
       <button onClick={onClick}>{text} </button>
       <style jsx>{`
-            button {
-        padding: 0.5rem;
-        background-color: var(--${color});
-        border: none;
-        border radius: 0.3rem;
-        cursor: pointer;
-      }
+        button {
+          padding: 0.5rem;
+          background-color: var(--${color});
+          border: none;
+          border-radius: 0.3rem;
+          cursor: pointer;
+          color: white;
+        }
 
-      button:hover {
-        
-       background-color: var(--${color}Dark);
-      }
-      
+        button:hover {
+          background-color: var(--${color}Dark);
+        }
       `}</style>
     </>
   );
