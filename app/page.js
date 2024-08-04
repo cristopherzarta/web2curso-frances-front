@@ -36,6 +36,7 @@ export default function Home() {
       });
   }, []);
 
+  console.log(courses)
   return (
     <div className="df fdc aic jcc  ">
       <Header />
