@@ -15,12 +15,12 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
         //ljadjdljdjñdjñdsjsaljasjdjlkdjdiieuioew
         createOrder: (data, actions) => {
           const jwt = localStorage.getItem("jwt");
-          console.log(jwt);
+          console.log({ jwt });
           return fetch(`${config.BASE_BACKEND_URL}/paypal/orders`, {
             method: "post",
             headers: {
               "Content-Type": "application/json",
-              authorization: "Bearer ${jwt}",
+              authorization: `Bearer ${jwt}`,
             },
             body: JSON.stringify({
               courseId,
@@ -39,6 +39,7 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
             `${config.BASE_BACKEND_URL}/paypal/orders/${data.orderID}/capture`,
             {
               method: "post",
+              body:JSON.stringify({price}),
             }
           )
             .then((response) => response.json())

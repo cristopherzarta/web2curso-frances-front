@@ -10,7 +10,8 @@ import { faCirclePlay, faLock } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "@/app/layout";
 import CourseSectionVideo from "@/components/CourseSectionVideo";
 
-const StudyPage = () => {
+const StudyPage = ({ params }) => {
+  const courseId = params.courseId;
   const {
     state: { isAuthenticated, user, alreadyChecked },
   } = useContext(AuthContext);
@@ -19,35 +20,33 @@ const StudyPage = () => {
 
   const router = useRouter();
   //const { courseId } = router.query
-  const params = useParams();
 
-  console.log(course);
   //console.log(`${params.courseId}`);
   //console.log({ alreadyChecked });
 
   useEffect(() => {
-    if (!!params.studyId && alreadyChecked) {
+    if (!!courseId && alreadyChecked) {
       console.log("FETCHING", { alreadyChecked, user });
-
-      const queryParams = !!user ? `?user_id${user.sub}` : "";
-      fetch(`${config.BASE_BACKEND_URL}/courses/${params.studyId} ${queryParams}`)
+      const queryParams = !!user ? `?user_id${user.sub}` : ""
+      fetch(`${config.BASE_BACKEND_URL}/courses/${courseId}${queryParams}`)
         .then((res) => res.json())
         .then(({ ok, data }) => {
           if (ok) {
             setCourse(data);
-            setSelectedVideo(data.sections[0].videos[0]);
+            setSelectedVideo(data.sections[0].videos[0])
           }
         })
         .catch((err) => {
-          console.log({ err });
-        });
+          console.log({ err })
+        })
     }
-  }, [params.studyId]);
+  }, [courseId]);
 
-  //console.log({ course });
+  console.log(course);
+  console.log(params.courseId);
 
   return (
-    <div>
+    <>
       <Header />
       <div className="df aic">
         <div
@@ -56,7 +55,6 @@ const StudyPage = () => {
         >
           <h3 className="p10"> SECCIONES del CURSO </h3>
           <div className="df fdc">
-            {" "}
             {course?.sections?.map((section) => (
               <div className="df fdc" key={section.name}>
                 <div
@@ -66,17 +64,17 @@ const StudyPage = () => {
                   <span>{section.name}</span>
                 </div>
                 <div className="mb5">
-                  {section.videos.map((video, index) => {
+                  {section.videos.map((video, index) => (
                     <CourseSectionVideo
                       key={video.title}
                       index={index}
                       video={video}
                       setSelectedVideo={setSelectedVideo}
                       isAuthenticated={isAuthenticated}
-                      hasBoughtTheCourse={course?.hasBoughtTheCourse}
+                      hasBoughtTheCourse={course.hasBoughtTheCourse}
                       isSelected={selectedVideo.title === video.title}
-                    />;
-                  })}
+                    />
+                  ))}
                 </div>
               </div>
             ))}
@@ -87,8 +85,8 @@ const StudyPage = () => {
             <h3>{selectedVideo?.title}</h3>
             <CourseVideo
               videoUrl={selectedVideo.videoUrl}
-              isFree={!!selectedVideo.free}
               isAuthenticated={isAuthenticated}
+              isFree={!!selectedVideo.free}
               hasBoughtTheCourse={course.hasBoughtTheCourse}
               setCourse={setCourse}
               howManySales={course.howManySales}
@@ -98,7 +96,7 @@ const StudyPage = () => {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 };
 
