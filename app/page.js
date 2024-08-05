@@ -8,7 +8,7 @@ import CourseCard from "@/components/CourseCard";
 import Header from "@/components/Header";
 import { AuthContext } from "./layout";
 import { config } from "@/constans/config";
-import PayPalButtons from "@/components/ui/PayPalButtons";
+
 
 
 

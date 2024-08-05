@@ -12,25 +12,26 @@ const CourseVideo = ({
   courseId,
   coursePrice,
   setCourse,
-}) => {
+  }) => {
   const couldWatch = (isAuthenticated && hasBoughtTheCourse) || isFree;
 
   const router = useRouter();
 
- console.log({ howManySales });
- 
+  console.log({ howManySales });
+
   const today = Date.now();
-  let price = howManySales < 25 
-  ? (coursePrice * 0.3).toFixed(0) 
-  : (coursePrice * 0.7).toFixed(0)
-const offerExpirationDate = new Date(2024, 9, 31, 17, 12)
-  
-if (isPast(offerExpirationDate)) {
-  price = coursePrice
-}
-//console.log({ 
-    //isPast: isPast(new Date(2024, 6, 31, 17, 12)), 
-    //date: new Date(2024, 6, 31, 17, 12)  });
+  let price =
+    howManySales < 25
+      ? (coursePrice * 0.3).toFixed(0)
+      : (coursePrice * 0.7).toFixed(0);
+  const offerExpirationDate = new Date(2024, 9, 31, 17, 12);
+
+  if (isPast(offerExpirationDate)) {
+    price = coursePrice;
+  }
+  //console.log({
+  //isPast: isPast(new Date(2024, 6, 31, 17, 12)),
+  //date: new Date(2024, 6, 31, 17, 12)  });
 
   return (
     <div
@@ -60,13 +61,12 @@ if (isPast(offerExpirationDate)) {
         <div className=" ">
           <p> Para visualizar este video primero deberias adquirir el curso </p>
           <PayPalButtons
-           price={price} 
-           courseId={courseId} 
-           setCourse={setCourse}
-           />
+            price={price}
+            courseId={courseId}
+            setCourse={setCourse}
+          />
         </div>
       )}
-      ;
     </div>
   );
 };

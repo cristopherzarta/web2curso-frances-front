@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Suspense, useContext, useEffect } from "react";
 import { AuthContext } from "../layout";
 import Header from "@/components/Header";
+import PayPalButtons from "@/components/ui/PayPalButtons";
 
 export default function Profile() {
   const { state, dispatch } = useContext(AuthContext);
@@ -38,7 +39,7 @@ export default function Profile() {
       <Header />
       <div>PROFILE</div>
 
-     
+ 
 
     </>
   );
