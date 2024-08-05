@@ -9,6 +9,8 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
   //const [alreadyRendered, setAlreadyRendered] = useState(false);
   const paypalRef = useRef();
 
+  console.log({ url: config.BASE_BACKEND_URL})
+
   const renderPaypalButtons = () => {
     paypal
       .Buttons({
@@ -49,10 +51,9 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
                 title: "Excelente",
                 html: "Ya puedes comenzar con el curso😀",
                 icon: "success",
-                confirmButtonText: " Excelente 👏",
+                confirmButtonText: "Excelente 👏",
                 timer: 3000,
-              });
-
+              })
               setCourse((oldCourseData) => ({
                 ...oldCourseData,
                 hasBoughtTheCourse: true,
@@ -87,7 +88,7 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
           borderRadius: "0.5rem",
         }}
       >
-        <h1 style={{ marginRight: "2rem " }}>$ {price}</h1>
+        <h1 style={{ marginRight: "2rem " }}>${price}</h1>
         <div ref={paypalRef}></div>
       </div>
       <style jsx>{`

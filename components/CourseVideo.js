@@ -49,6 +49,7 @@ const CourseVideo = ({
           controls
         ></video>
       )}
+      
       {!couldWatch && !isAuthenticated && (
         <p>
           Para visualizar el curso primero deberias{" "}
