@@ -12,10 +12,10 @@ const CourseVideo = ({
   courseId,
   coursePrice,
   setCourse,
-  }) => {
-  const couldWatch = (isAuthenticated && hasBoughtTheCourse) || isFree
+}) => {
+  const couldWatch = (isAuthenticated && hasBoughtTheCourse) || isFree;
 
-  const router = useRouter()
+  const router = useRouter();
 
   //console.log({ howManySales });
 
@@ -23,11 +23,11 @@ const CourseVideo = ({
   let price =
     howManySales < 25
       ? (coursePrice * 0.4).toFixed(0)
-      : (coursePrice * 0.6).toFixed(0)
-  const offerExpirationDate = new Date(2024, 9, 31, 17, 12)
+      : (coursePrice * 0.6).toFixed(0);
+  const offerExpirationDate = new Date(2024, 9, 31, 17, 12);
 
   if (isPast(offerExpirationDate)) {
-    price = coursePrice
+    price = coursePrice;
   }
   //console.log({
   //isPast: isPast(new Date(2024, 6, 31, 17, 12)),
@@ -38,18 +38,21 @@ const CourseVideo = ({
       className="df aic jcc mt20 br5"
       style={{
         overflow: "hidden",
+        maxWidth: 28*1.77 + "rem",
         height: "28rem",
         boxShadow: "0 2px 10px rgba(255,255,255,0.2)",
       }}
     >
       {couldWatch && (
-        <video
-          src={videoUrl}
-          style={{ width: "100%", height: "100%" }}
-          controls
-        ></video>
+        <video style={{ width: "100%", height: "100%" }} controls>
+          <source
+            src={videoUrl}
+            type="video/mp4"
+            onSeeking={(e) => console.log("SEEKING", e)}
+          ></source>
+        </video>
       )}
-      
+
       {!couldWatch && !isAuthenticated && (
         <p>
           Para visualizar el curso primero deberias{" "}
@@ -66,7 +69,7 @@ const CourseVideo = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default CourseVideo
+export default CourseVideo;

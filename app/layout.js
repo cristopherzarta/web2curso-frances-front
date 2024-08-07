@@ -19,7 +19,7 @@ const initialState = {
   alreadyChecked: false,
   isAuthenticated: false,
   user: null,
-  jwt: null,
+  token: null,
 };
 
 const reducer = (state, action) => {
@@ -27,12 +27,12 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
       localStorage.setItem("user", JSON.stringify(action.payload.user));
-      localStorage.setItem("jwt", action.payload.jwt);
+      localStorage.setItem("token", action.payload.jwt);
       return {
         ...state,
         isAuthenticated: true,
         user: action.payload.user,
-        jwt: action.payload.jwt,
+        token: action.payload.jwt,
       };
     case "LOGOUT":
       localStorage.clear();
@@ -48,7 +48,7 @@ const reducer = (state, action) => {
         alreadyChecked: action.payload.alreadyChecked,
         isAuthenticated: action.payload.isAuthenticated,
         user: action.payload.user,
-        jwt: action.payload.jwt,
+        token: action.payload.token,
       };
     default:
       return state;
@@ -62,19 +62,19 @@ function RootLayout({ children }) {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
-    const jwt = localStorage.getItem("jwt");
+    const token = localStorage.getItem("token");
 
-    if (!!jwt || !!user) {
+    if (!!token || !!user) {
       dispatch({
         type: "SET_LOGGED_USER",
-        payload: { user, jwt, isAuthenticated: true, alreadyChecked: true },
+        payload: { user, token, isAuthenticated: true, alreadyChecked: true },
       });
     } else {
       dispatch({
         type: "SET_LOGGED_USER",
         payload: {
           user: null,
-          jwt: null,
+          token: null,
           isAuthenticated: false,
           alreadyChecked: true,
         },

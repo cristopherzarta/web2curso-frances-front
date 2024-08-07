@@ -4,48 +4,51 @@ import { useEffect, useRef, useState } from "react";
 import { config } from "@/constans/config";
 import Swal from "sweetalert2";
 
+
 const PayPalButtons = ({ price, courseId, setCourse }) => {
   const [render, setRender] = useState(false);
   //const [alreadyRendered, setAlreadyRendered] = useState(false);
   const paypalRef = useRef();
 
-  console.log({ url: config.BASE_BACKEND_URL})
+  console.log({ url: config.BASE_BACKEND_URL });
 
   const renderPaypalButtons = () => {
     paypal
       .Buttons({
         //ljadjdljdjñdjñdsjsaljasjdjlkdjdiieuioew
         createOrder: (data, actions) => {
-          const jwt = localStorage.getItem("jwt");
-          console.log({ jwt });
-          return fetch(`${config.BASE_BACKEND_URL}/paypal/orders`, {
+          const token = localStorage.getItem("token")
+
+           return fetch(`${config.BASE_BACKEND_URL}/paypal/orders`, {
             method: "post",
             headers: {
               "Content-Type": "application/json",
-              authorization: `Bearer ${jwt}`,
+              authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
               courseId,
               price,
             }),
-
-            //skdjklsjdlkjskldklajlkdjlkadkjadjlkadjkaldj
-            //skdjklsjdlkjskldklajlkdjlkadkjadjlkadjkaldj
           })
             .then((response) => response.json())
             .then((order) => order.id);
         },
         //jksdjlksjdlksjkdjlksdjlksdjksdlssdsda
         onApprove: (data, actions) => {
+          const token = localStorage.getItem("token")
           return fetch(
             `${config.BASE_BACKEND_URL}/paypal/orders/${data.orderID}/capture`,
             {
               method: "post",
-              body:JSON.stringify({price}),
+              headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({ price }),
             }
           )
             .then((response) => response.json())
-            .then((orderData) => {
+            .then((capture_id) => {
               //kskskkskskalalsññiiopipjñljñjjñl
               Swal.fire({
                 title: "Excelente",
@@ -53,21 +56,22 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
                 icon: "success",
                 confirmButtonText: "Excelente 👏",
                 timer: 3000,
-              })
+              });
               setCourse((oldCourseData) => ({
                 ...oldCourseData,
                 hasBoughtTheCourse: true,
-              }));
-              // when ready to go live, remove the alertjjkjlhgyoupoupoupodgdhg
-              // when ready to go live, remove the alertjjkjlhgyoupoupoupodgdhg
-              // when ready to go live, remove the alertjjkjlhgyoupoupoupodgdhg
-              // when ready to go live, remove the alertjjkjlhgyoupoupoupodgdhg
-            });
+                capture_id,
+              }))         
+            })
         },
         style: { color: "blue" },
       })
-      .render(paypalRef.current);
+      .render(paypalRef.current)
   };
+
+ // const handleBuy = () => {
+   // const paypalButton = document.querySelector(".paypal-button")
+  //  paypalButton.click() }
 
   useEffect(() => {
     if (render && courseId) {
@@ -77,6 +81,8 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
     }
   }, [render, courseId]);
   console.log({ price });
+
+
 
   return (
     <>
@@ -88,8 +94,9 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
           borderRadius: "0.5rem",
         }}
       >
-        <h1 style={{ marginRight: "2rem " }}>${price}</h1>
-        <div ref={paypalRef}></div>
+        <h2 style={{ marginRight: "2rem " }}>${price}</h2>
+        <div ref={paypalRef}
+        ></div>        
       </div>
       <style jsx>{`
         .dom-ready {
