@@ -13,6 +13,8 @@
   --violeteDark: #8d0bd9;
   --green: #0dff2d;
   --greenDark: #1d8608;
+  --blue: #0070BA;
+  --blueDark:  #055f9b;
   --red: #ff0d0d;
   --redDark: #8d0f0f;
   --yellow: #ffff05;
@@ -25,6 +27,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+   
   }
   
   body {
@@ -43,6 +46,8 @@ a {
 
 .cursorp { cursor: pointer }
 .posr { position: relative }
+.posa { position: absolute }
+.oh { overflow: hidden }
 
 .df { display: flex; }
 .fdc { flex-direction: column; }
@@ -56,9 +61,12 @@ a {
 .br20 { border-radius: 2rem; }
 .ml5 { margin-left: 0.5rem; }
 .mr5 { margin-right: 0.5rem; }
+.mr10 { margin-right: 1rem; }
 .m0 { margin: 0; }
 .mb20 { margin-bottom: 2rem; }
 .mb5 { margin-bottom: 0.5rem; }
+.mt2 { margin-top: 0.2rem; }
+.mt3 { margin-top: 0.3rem; }
 .mt5 { margin-top: 0.5rem; }
 .mt10 { margin-top: 1rem; }
 .mt20 { margin-top: 2rem; }
@@ -74,6 +82,7 @@ a {
 .tdu { text-decoration: underline; }
 .tac { text-align: center; }
 .p5 { padding: 0.5rem; }
+.pt5 { padding-top: 0.5rem; }
 .p10 { padding: 1rem; }
 
 .cblack { color: var(--black); }
@@ -82,8 +91,12 @@ a {
 .cgrey { color: var(--grey); }
 .cred { color: var(--red); }
 .cviolet { color: var(--violet); }
+.cblue { color: var(--blue); }
 .cgreen { color: var(--green); }
 .cyellow { color: var(--yellow); }
+
+.fs12 { font-size: 1.2rem; }
+.fs14 { font-size: 1.4rem; }
 
 @media (max-width: 700px) {
   .main-title {

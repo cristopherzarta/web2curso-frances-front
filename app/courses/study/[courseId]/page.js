@@ -1,44 +1,65 @@
 "use client";
-
-import CourseVideo from "@/components/CourseVideo";
-import Header from "@/components/Header";
-import { config } from "@/constans/config";
-import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-import { faCirclePlay, faLock } from "@fortawesome/free-solid-svg-icons";
-import { AuthContext } from "@/app/layout";
 import CourseSectionVideo from "@/components/CourseSectionVideo";
+import CourseVideo from "@/components/CourseVideo";
+import Header from "@/components/Header";
+import Button from "@/components/ui/Button";
+import { config } from "@/constans/config";
+import { AuthContext } from "@/app/layout";
+import { Container } from "@/components/ui/Container";
 
 const StudyPage = ({ params }) => {
   const courseId = params.courseId;
   const {
-    state: { isAuthenticated, user, alreadyChecked },
-  } = useContext(AuthContext);
+    state: { isAuthenticated, user, alreadyChecked, token },
+   } = useContext(AuthContext);
   const [course, setCourse] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
+  console.log({ course })
+
+  const handleRefund = async () => {
+    console.log("REFUNDING")
+    const url = `${config.BASE_BACKEND_URL}/paypal/captures/${course.capture_id}/refund`
+    const res = await fetch(url, {
+     
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+    })
+    const data = await res.json()
+   
+    if(data.ok){
+  setCourse((prevData) => ({...prevData, hasBoughtTheCourse: false}))
+     Swal.fire("Listo", data.message, "success") 
+    } else {
+      Swal.fire("UPS", data.message, "error")
+    }
+  }
 
   const router = useRouter();
   //const { courseId } = router.query
 
   //console.log(`${params.courseId}`);
-  //console.log({ alreadyChecked });
+  //console.log({ course });
 
   useEffect(() => {
     if (!!courseId && alreadyChecked) {
       console.log("FETCHING", { alreadyChecked, user });
-      const queryParams = !!user ? `?user_id${user.sub}` : ""
+      const queryParams = !!user ? `?user_id${user.sub}` : "";
       fetch(`${config.BASE_BACKEND_URL}/courses/${courseId}${queryParams}`)
         .then((res) => res.json())
         .then(({ ok, data }) => {
           if (ok) {
             setCourse(data);
-            setSelectedVideo(data.sections[0].videos[0])
+            setSelectedVideo(data.sections[0].videos[0]);
           }
         })
         .catch((err) => {
-          console.log({ err })
-        })
+          console.log({ err });
+        });
     }
   }, [courseId]);
 
@@ -48,6 +69,7 @@ const StudyPage = ({ params }) => {
   return (
     <>
       <Header />
+      <Container>
       <div className="df aic">
         <div
           className="df fdc"
@@ -82,7 +104,14 @@ const StudyPage = ({ params }) => {
         </div>
         {!!selectedVideo && (
           <div className="p10" style={{ height: "100vh", minWidth: "70%" }}>
-            <h3>{selectedVideo?.title}</h3>
+            <div className="df aic jcsb">
+              <h3>{selectedVideo?.title}</h3>
+              {!!course.capture_id && course.hasBoughtTheCourse && (
+                <Button color="red" onClick={handleRefund}>
+                  Obtener devolucion
+                </Button>
+              )}
+            </div>
             <CourseVideo
               videoUrl={selectedVideo.videoUrl}
               isAuthenticated={isAuthenticated}
@@ -96,6 +125,7 @@ const StudyPage = ({ params }) => {
           </div>
         )}
       </div>
+      </Container>
     </>
   );
 };

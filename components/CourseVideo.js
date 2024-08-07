@@ -17,37 +17,42 @@ const CourseVideo = ({
 
   const router = useRouter();
 
- console.log({ howManySales });
- 
-  const today = Date.now();
-  let price = howManySales < 25 
-  ? (coursePrice * 0.3).toFixed(0) 
-  : (coursePrice * 0.7).toFixed(0)
-const offerExpirationDate = new Date(2024, 9, 31, 17, 12)
-  
-if (isPast(offerExpirationDate)) {
-  price = coursePrice
-}
-//console.log({ 
-    //isPast: isPast(new Date(2024, 6, 31, 17, 12)), 
-    //date: new Date(2024, 6, 31, 17, 12)  });
+  //console.log({ howManySales });
+
+  //const today = Date.now();
+  let price =
+    howManySales < 25
+      ? (coursePrice * 0.4).toFixed(0)
+      : (coursePrice * 0.6).toFixed(0);
+  const offerExpirationDate = new Date(2024, 9, 31, 17, 12);
+
+  if (isPast(offerExpirationDate)) {
+    price = coursePrice;
+  }
+  //console.log({
+  //isPast: isPast(new Date(2024, 6, 31, 17, 12)),
+  //date: new Date(2024, 6, 31, 17, 12)  });
 
   return (
     <div
       className="df aic jcc mt20 br5"
       style={{
         overflow: "hidden",
+        maxWidth: 28*1.77 + "rem",
         height: "28rem",
-        boxShadow: "0 3px 5px rgba(255,255,255,0.2)",
+        boxShadow: "0 2px 10px rgba(255,255,255,0.2)",
       }}
     >
       {couldWatch && (
-        <video
-          src={videoUrl}
-          style={{ width: "100%", height: "100%" }}
-          controls
-        ></video>
+        <video style={{ width: "100%", height: "100%" }} controls>
+          <source
+            src={videoUrl}
+            type="video/mp4"
+            onSeeking={(e) => console.log("SEEKING", e)}
+          ></source>
+        </video>
       )}
+
       {!couldWatch && !isAuthenticated && (
         <p>
           Para visualizar el curso primero deberias{" "}
@@ -57,16 +62,12 @@ if (isPast(offerExpirationDate)) {
         </p>
       )}
       {!couldWatch && isAuthenticated && (
-        <div className=" ">
+        <div className="df aic fdc">
           <p> Para visualizar este video primero deberias adquirir el curso </p>
-          <PayPalButtons
-           price={price} 
-           courseId={courseId} 
-           setCourse={setCourse}
-           />
+
+          <PayPalButtons price={2} courseId={courseId} setCourse={setCourse} />
         </div>
       )}
-      ;
     </div>
   );
 };

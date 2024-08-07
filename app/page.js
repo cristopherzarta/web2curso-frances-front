@@ -3,12 +3,10 @@
 import "./globals.css";
 import { useContext, useEffect, useState } from "react";
 
-import CourseVideo from "@/components/CourseVideo";
 import CourseCard from "@/components/CourseCard";
 import Header from "@/components/Header";
-import { AuthContext } from "./layout";
 import { config } from "@/constans/config";
-import PayPalButtons from "@/components/ui/PayPalButtons";
+
 
 
 
