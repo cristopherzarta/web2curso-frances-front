@@ -12,12 +12,14 @@ const CourseVideo = ({
   courseId,
   coursePrice,
   setCourse,
+  captureId,
 }) => {
   const couldWatch = (isAuthenticated && hasBoughtTheCourse) || isFree;
 
   const router = useRouter();
 
-  //console.log({ howManySales });
+  //console.log({ courseId });
+  //console.log({ hasBoughtTheCourse });
 
   //const today = Date.now();
   let price =
@@ -32,27 +34,23 @@ const CourseVideo = ({
   //console.log({
   //isPast: isPast(new Date(2024, 6, 31, 17, 12)),
   //date: new Date(2024, 6, 31, 17, 12)  });
-
+ //console.log({couldWatch})
   return (
     <div
-      className="df aic jcc mt20 br5"
+      className="df aic jcc mt20 br5 "
       style={{
         overflow: "hidden",
-        maxWidth: 28*1.77 + "rem",
+        width: 28 * 1.77 + "rem",
         height: "28rem",
         boxShadow: "0 2px 10px rgba(255,255,255,0.2)",
       }}
     >
       {couldWatch && (
-        <video style={{ width: "100%", height: "100%" }} controls>
-          <source
-            src={videoUrl}
-            type="video/mp4"
-            onSeeking={(e) => console.log("SEEKING", e)}
-          ></source>
-        </video>
+        <video src={videoUrl}
+        style={{ width: "100%",
+        height: "100%" }} controls
+        ></video>
       )}
-
       {!couldWatch && !isAuthenticated && (
         <p>
           Para visualizar el curso primero deberias{" "}
@@ -61,13 +59,13 @@ const CourseVideo = ({
           </u>
         </p>
       )}
-      {!couldWatch && isAuthenticated && (
+      {couldWatch && isAuthenticated && (
         <div className="df aic fdc">
           <p> Para visualizar este video primero deberias adquirir el curso </p>
-
+          
           <PayPalButtons price={2} courseId={courseId} setCourse={setCourse} />
         </div>
-      )}
+      )}  
     </div>
   );
 };

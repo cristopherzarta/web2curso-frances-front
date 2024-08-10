@@ -54,6 +54,7 @@ a {
 .aic { align-items: center; }
 .jcc { justify-content: center; }
 .jcsb { justify-content: space-between; }
+.asfe { align-self: flex-end; }
 
 .w100p { width: 100%; }
 .br2 { border-radius: 0.2rem; }
@@ -77,6 +78,10 @@ a {
 .mh5 {
   margin-right: 0.5rem;
   margin-left: 0.5rem;
+}
+.mh10 {
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
 .tdu { text-decoration: underline; }
