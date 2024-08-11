@@ -16,6 +16,7 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
         //Order is creates on the server and the order id is returned
         createOrder: (data, actions) => {
           const token = localStorage.getItem("token");
+          console.log({ token })
 
           return fetch(`${config.BASE_BACKEND_URL}/paypal/orders`, {
             method: "post",
@@ -92,7 +93,7 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
         }}
       >
         <h2 style={{ marginRight: "2rem " }}>${price}</h2>
-        <button onClick={renderPaypalButtons}>comprar</button>
+        <button onClick={renderPaypalButtons}></button>
         <div ref={paypalRef}></div>
       </div>
       <style jsx>{`

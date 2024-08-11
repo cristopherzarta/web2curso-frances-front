@@ -12,7 +12,7 @@ const PayPalButtons2 = ({ price, courseId, setCourse }) => {
   const renderPaypalButtons = () => {
     paypal
       .Buttons({
-        //ljadjdljdjñdjñdsjsaljasjdjlkdjdiieuioew
+        // order is created on the server and the order id is returned
         createOrder: (data, actions) => {
           const token = localStorage.getItem("token")
           console.log(token)
@@ -46,7 +46,6 @@ const PayPalButtons2 = ({ price, courseId, setCourse }) => {
                 authorization: `Bearer ${token}`,
               },
               body: JSON.stringify({ price }),
-
             }
           )
             .then((response) => response.json())
