@@ -9,12 +9,11 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
   //const [alreadyRendered, setAlreadyRendered] = useState(false);
   const paypalRef = useRef();
 
-  console.log({ url: config.BASE_BACKEND_URL });
-
+  //console.log({ url: config.BASE_BACKEND_URL });
   const renderPaypalButtons = () => {
     paypal
       .Buttons({
-        //ljadjdljdjñdjñdsjsaljasjdjlkdjdiieuioew
+        //Order is creates on the server and the order id is returned
         createOrder: (data, actions) => {
           const token = localStorage.getItem("token");
 
@@ -48,7 +47,7 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
           )
             .then((response) => response.json())
             .then((capture_id) => {
-              //kskskkskskalalsññiiopipjñljñjjñl
+              //Successful Capture! for dev/demo purposes:
               Swal.fire({
                 title: "Excelente",
                 html: "Ya puedes comenzar con el curso😀",
@@ -68,12 +67,13 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
       .render(paypalRef.current);
   };
 
-   const handleBuy = () => {
-   const paypalButton = document.querySelector(".paypal-button")
-   paypalButton.click() }
+   //const handleBuy = () => {
+  // const paypalButton = document.querySelector(".paypal-button")
+   //paypalButton.click() }
 
   useEffect(() => {
     if (render && courseId) {
+      console.log("RENDER")
       renderPaypalButtons();
     } else {
       setRender(true);

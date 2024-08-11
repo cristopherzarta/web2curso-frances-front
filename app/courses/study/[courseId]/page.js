@@ -10,13 +10,13 @@ import { AuthContext } from "@/app/layout";
 import { Container } from "@/components/ui/Container";
 
 const StudyPage = ({ params }) => {
-  const courseId = params.courseId;
   const {
     state: { isAuthenticated, user, alreadyChecked, token },
   } = useContext(AuthContext);
+  const courseId = params.courseId;
   const [course, setCourse] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
-  //console.log({ course })
+  console.log({ course })
 
   const handleRefund = async () => {
     console.log("REFUNDING");
@@ -47,8 +47,7 @@ const StudyPage = ({ params }) => {
   //console.log({ alreadyChecked })
   useEffect(() => {
     //console.log({ user })
-    console.log("FETCHING", { alreadyChecked });
-    if (!!courseId && alreadyChecked) {
+     if (!!courseId && alreadyChecked) {
       console.log("FETCHING", { alreadyChecked, user });
       const queryParams = !!user ? `?user_id=${user.sub}` : "";
       fetch(`${config.BASE_BACKEND_URL}/courses/${courseId}${queryParams}`)
@@ -56,7 +55,7 @@ const StudyPage = ({ params }) => {
         .then(({ ok, data }) => {
           if (ok) {
             setCourse(data);
-            setSelectedVideo(data.sections[0].videos[0]);
+            setSelectedVideo(data.sections[0].videos[1]);
           }
         })
         .catch((err) => {

@@ -21,6 +21,7 @@ export default function Profile() {
   searchParams.get("login_info");
 
   const router = useRouter();
+  console.log({ token})
 
   const handleDeletePersonalData = async () => {
     const response = await Swal.fire({

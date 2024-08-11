@@ -12,7 +12,7 @@ const CourseVideo = ({
   courseId,
   coursePrice,
   setCourse,
-  captureId,
+  c
 }) => {
   const couldWatch = (isAuthenticated && hasBoughtTheCourse) || isFree;
 
@@ -40,8 +40,8 @@ const CourseVideo = ({
       className="df aic jcc mt20 br5 "
       style={{
         overflow: "hidden",
-        width: 28 * 1.77 + "rem",
-        height: "28rem",
+        width: "100%",
+        height: "auto",
         boxShadow: "0 2px 10px rgba(255,255,255,0.2)",
       }}
     >
@@ -59,7 +59,7 @@ const CourseVideo = ({
           </u>
         </p>
       )}
-      {couldWatch && isAuthenticated && (
+      {!couldWatch && isAuthenticated && (
         <div className="df aic fdc">
           <p> Para visualizar este video primero deberias adquirir el curso </p>
           
