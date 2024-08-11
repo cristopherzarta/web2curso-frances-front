@@ -1,21 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { config } from "@/constans/config";
-import Swal from "sweetalert2";
+import { useEffect, useRef, useState } from "react";
 
-const PayPalButtons = ({ price, courseId, setCourse }) => {
+const PayPalButtons2 = ({ price, courseId, setCourse }) => {
   const [render, setRender] = useState(false);
-  //const [alreadyRendered, setAlreadyRendered] = useState(false);
+
+  console.log({ url: config.BASE_BACKEND_URL });
   const paypalRef = useRef();
 
-  //console.log({ url: config.BASE_BACKEND_URL });
   const renderPaypalButtons = () => {
     paypal
       .Buttons({
-        //Order is creates on the server and the order id is returned
+        //ljadjdljdjñdjñdsjsaljasjdjlkdjdiieuioew
         createOrder: (data, actions) => {
-          const token = localStorage.getItem("token");
+          const token = localStorage.getItem("token")
+          console.log(token)
 
           return fetch(`${config.BASE_BACKEND_URL}/paypal/orders`, {
             method: "post",
@@ -27,11 +27,14 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
               courseId,
               price,
             }),
+            //use the body param to optionallle pass addiontional order inofrmation
+            // like product ids or amount
           })
             .then((response) => response.json())
             .then((order) => order.id);
         },
-        //jksdjlksjdlksjkdjlksdjlksdjksdlssdsda
+        //sfjkfsjklfsjskljkfljklfjfslksjklfjsfkljkfl
+
         onApprove: (data, actions) => {
           const token = localStorage.getItem("token");
           return fetch(
@@ -43,11 +46,12 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
                 authorization: `Bearer ${token}`,
               },
               body: JSON.stringify({ price }),
+
             }
           )
             .then((response) => response.json())
             .then((capture_id) => {
-              //Successful Capture! for dev/demo purposes:
+              //kslñfklñdskñlsfkñlfskñlfsdkfdsñlkfñl
               Swal.fire({
                 title: "Excelente",
                 html: "Ya puedes comenzar con el curso😀",
@@ -65,22 +69,18 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
         style: { color: "blue" },
       })
       .render(paypalRef.current);
+    
   };
-
-   //const handleBuy = () => {
-  // const paypalButton = document.querySelector(".paypal-button")
-   //paypalButton.click() }
 
   useEffect(() => {
     if (render && courseId) {
-      console.log("RENDER")
       renderPaypalButtons();
     } else {
       setRender(true);
     }
+
   }, [render, courseId]);
   console.log({ price });
-
   return (
     <>
       <div
@@ -91,9 +91,9 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
           borderRadius: "0.5rem",
         }}
       >
-        <h2 style={{ marginRight: "2rem " }}>${price}</h2>
-        <button onClick={renderPaypalButtons}>comprar</button>
-        <div ref={paypalRef}></div>
+          <h2 style={{ marginRight: "2rem " }}>{price}</h2>
+          <button onClick={renderPaypalButtons}>$</button>
+          <div ref={paypalRef}></div>
       </div>
       <style jsx>{`
         .dom-ready {
@@ -104,4 +104,4 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
   );
 };
 
-export default PayPalButtons;
+export default PayPalButtons2;

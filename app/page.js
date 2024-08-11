@@ -1,11 +1,12 @@
 "use client";
 
 import "./globals.css";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import CourseCard from "@/components/CourseCard";
 import Header from "@/components/Header";
 import { config } from "@/constans/config";
+import PayPalButtons2 from "@/components/ui/PayPalButtons2";
 
 
 
@@ -20,9 +21,7 @@ export default function Home() {
   //console.log({BASE_BACKEND_URL, env: process.env.NEXT_PUBLIC_VERCEL_ENV});
 
   useEffect(() => {
-    //if (!!jwt)
-
-    fetch(`${config.BASE_BACKEND_URL}/courses`)
+     fetch(`${config.BASE_BACKEND_URL}/courses`)
       .then((res) => res.json())
       .then(({ ok, data }) => {
         if (ok) {
@@ -34,7 +33,7 @@ export default function Home() {
       });
   }, []);
 
-  console.log(courses)
+  //console.log(courses)
   return (
     <div className="df fdc aic jcc  ">
       <Header />
@@ -53,6 +52,7 @@ export default function Home() {
           <CourseCard course={c} key={c._id} />
         ))}
       </div>
+      <PayPalButtons2 id="ksldklksdjsdljsd"/>
       
     </div>
   );

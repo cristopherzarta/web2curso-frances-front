@@ -6,8 +6,12 @@ import "./globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
+import Script from "next/script";
 
 export const AuthContext = createContext();
+
+const PAYPAL_CLIENT_ID =process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID
+    console.log({ env: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID})
 
 /*const getLoginInfo = (entity) => {
   return typeof localStorage !== "undefined"
@@ -87,6 +91,7 @@ function RootLayout({ children }) {
       <AuthContext.Provider value={{ state, dispatch }}>
         <body className={inter.className}>
           <Suspense>{children}</Suspense>
+          <Script src={`https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&currency=USD`}/>
         </body>
       </AuthContext.Provider>
     </html>
