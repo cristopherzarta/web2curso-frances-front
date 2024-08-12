@@ -31,8 +31,12 @@ const StudyPage = ({ params }) => {
     const data = await res.json();
 
     if (data.ok) {
-      setCourse((prevData) => ({ ...prevData, hasBoughtTheCourse: false }));
-      Swal.fire("Listo", data.message, "success");
+      setCourse((prevData) => ({ ...prevData, hasBoughtTheCourse: false }))
+      Swal.fire(
+        "Listo",
+         data.message,
+          "success"
+        )
     } else {
       Swal.fire("UPS", data.message, "error");
     }
@@ -111,7 +115,7 @@ const StudyPage = ({ params }) => {
                 <h3>{selectedVideo?.title}</h3>
                 {!!course.capture_id && course.hasBoughtTheCourse && (
                   <Button color="red" onClick={handleRefund}>
-                    Obtener devolucion
+                    Obtener devolución
                   </Button>
                 )}
               </div>
