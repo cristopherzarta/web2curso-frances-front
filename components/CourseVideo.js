@@ -12,7 +12,7 @@ const CourseVideo = ({
   courseId,
   coursePrice,
   setCourse,
-  c
+   
 }) => {
   const couldWatch = (isAuthenticated && hasBoughtTheCourse) || isFree;
 
