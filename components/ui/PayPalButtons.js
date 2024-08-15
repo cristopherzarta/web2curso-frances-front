@@ -16,7 +16,7 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
         //Order is creates on the server and the order id is returned
         createOrder: (data, actions) => {
           const token = localStorage.getItem("token");
-          console.log({ token })
+          console.log({ token });
 
           return fetch(`${config.BASE_BACKEND_URL}/paypal/orders`, {
             method: "post",
@@ -68,19 +68,19 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
       .render(paypalRef.current);
   };
 
-   //const handleBuy = () => {
+  //const handleBuy = () => {
   // const paypalButton = document.querySelector(".paypal-button")
-   //paypalButton.click() }
+  //paypalButton.click() }
 
   useEffect(() => {
     if (render && courseId) {
-      console.log("RENDER")
+      // console.log("RENDER")
       renderPaypalButtons();
     } else {
       setRender(true);
     }
   }, [render, courseId]);
-  console.log({ price });
+  // console.log({ price });
 
   return (
     <>

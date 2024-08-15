@@ -15,7 +15,7 @@ const PayPalButtons2 = ({ price, courseId, setCourse }) => {
         // order is created on the server and the order id is returned
         createOrder: (data, actions) => {
           const token = localStorage.getItem("token")
-          console.log(token)
+         // console.log(token)
 
           return fetch(`${config.BASE_BACKEND_URL}/paypal/orders`, {
             method: "post",

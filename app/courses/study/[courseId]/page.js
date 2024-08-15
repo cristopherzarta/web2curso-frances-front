@@ -8,6 +8,7 @@ import Button from "@/components/ui/Button";
 import { config } from "@/constans/config";
 import { AuthContext } from "@/app/layout";
 import { Container } from "@/components/ui/Container";
+import Swal from "sweetalert2";
 
 const StudyPage = ({ params }) => {
   const {
@@ -16,7 +17,7 @@ const StudyPage = ({ params }) => {
   const courseId = params.courseId;
   const [course, setCourse] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
-  console.log({ course })
+  console.log({ course });
 
   const handleRefund = async () => {
     console.log("REFUNDING");
@@ -31,12 +32,8 @@ const StudyPage = ({ params }) => {
     const data = await res.json();
 
     if (data.ok) {
-      setCourse((prevData) => ({ ...prevData, hasBoughtTheCourse: false }))
-      Swal.fire(
-        "Listo",
-         data.message,
-          "success"
-        )
+      setCourse((prevData) => ({ ...prevData, hasBoughtTheCourse: false }));
+      Swal.fire("Listo", data.message, "success");
     } else {
       Swal.fire("UPS", data.message, "error");
     }
@@ -51,7 +48,7 @@ const StudyPage = ({ params }) => {
   //console.log({ alreadyChecked })
   useEffect(() => {
     //console.log({ user })
-     if (!!courseId && alreadyChecked) {
+    if (!!courseId && alreadyChecked) {
       console.log("FETCHING", { alreadyChecked, user });
       const queryParams = !!user ? `?user_id=${user.sub}` : "";
       fetch(`${config.BASE_BACKEND_URL}/courses/${courseId}${queryParams}`)
