@@ -8,7 +8,7 @@ import PayPalButtons2 from "@/components/ui/PayPalButtons2";
 const page = () => {
   return (
     <div className="df fdc aic jcc  ">
-<PayPalButtons2/>
+      <PayPalButtons2/>
       <div>page</div>
       <PayPalButtons/>
       </div>
