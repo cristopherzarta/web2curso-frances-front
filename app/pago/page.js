@@ -9,7 +9,7 @@ const page = () => {
   return (
     <div className="df fdc aic jcc  ">
       <PayPalButtons2/>
-      <div>page</div>
+      <div>pagehjhhjjhjh</div>
       <PayPalButtons/>
       </div>
   );
