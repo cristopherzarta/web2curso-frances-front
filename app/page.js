@@ -38,7 +38,7 @@ export default function Home() {
           &ldquo;Vive como si fueras a morir mañana, aprende como si fueras a
           vivir por siempre.&rdquo;
         </h1>
-        <span>- Mahatma Gandhi*++</span>
+        <span>- Mahatma Gandhi*22232</span>
       </div>
 
       <h2 className="mt20 tdu" style={{ margintop: "5rem" }}>
