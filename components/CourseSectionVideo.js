@@ -21,9 +21,11 @@ const CourseSectionVideo = ({
   return (
     <div className="df aic p5 cursorp" onClick={() => setSelectedVideo(video)}>
       {couldWatch && (
-        <FontAwesomeIcon
-          icon={faCirclePlay}
-          className={"mh5" + isSelected ? "cgreen" : "cviolet"}
+        <i
+          className={
+            "fa-solid fa-circle-play mh5" +
+            (isSelected ? " cgreen" : " cviolet")
+          }
         />
       )}
       {!couldWatch && <FontAwesomeIcon icon={faLock} className={"cred mh5"} />}

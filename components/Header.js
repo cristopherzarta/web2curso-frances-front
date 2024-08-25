@@ -76,7 +76,7 @@ const Header = ({ isLoginPage }) => {
                     {
                       text: "Cerrar sesion",
                       color: "var(--red)",
-                      icon: "fas fa-sing-out-alt",
+                      icon: "fas fa-right-from-bracket",
                       onClick: handleLogout,
                     },
                   ].map((option) => (
