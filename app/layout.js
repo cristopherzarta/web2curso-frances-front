@@ -91,6 +91,9 @@ function RootLayout({ children }) {
       <AuthContext.Provider value={{ state, dispatch }}>
         <body className={inter.className}>
           <Suspense>{children}</Suspense>
+          <Script 
+          defer 
+          src="https://kit.fontawesome.com/a8c0654f3f.js" crossorigin="anonymous"></Script>
           <Script
             defer
             src={`https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&currency=USD`}
