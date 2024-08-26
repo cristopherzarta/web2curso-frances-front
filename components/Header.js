@@ -32,7 +32,7 @@ const Header = ({ isLoginPage }) => {
       >
         <Container>
           <h1 className="cursorp" onClick={() => router.push("/")}>
-            🧠 Feed Him Well
+            🏆 Inicio 
           </h1>
           {!isAuthenticated && !isLoginPage && (
             <Button onClick={() => router.push("/login")} color="violet">
