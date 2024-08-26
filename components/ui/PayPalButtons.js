@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { config } from "@/constans/config";
 import Swal from "sweetalert2";
 
-const PayPalButtons = ({ price, courseId, setCourse }) => {
+const PayPalButtons = ({ coursePrice, price, courseId, setCourse }) => {
   const [render, setRender] = useState(false);
   //const [alreadyRendered, setAlreadyRendered] = useState(false);
   const paypalRef = useRef();
@@ -85,20 +85,39 @@ const PayPalButtons = ({ price, courseId, setCourse }) => {
   return (
     <>
       <div
-        className="df aic mt20 mb20 cblack"
+        className="df mt20 mb20 cblack"
         style={{
           backgroundColor: "white",
           padding: "1rem",
           borderRadius: "0.5rem",
         }}
       >
-        <h2 style={{ marginRight: "2rem " }}>${price}</h2>
+        <div className="df fdc aic" style={{ marginRight: "2rem " }}>
+          <h1
+            className="tdlt cgreylight"
+            style={{ fontSize: "1.5rem", fontWeight: "400", margin: "0" }}
+          >
+            ${coursePrice}
+          </h1>
+          <h1 style={{ fontSize: "3rem" }} className="cprice">
+            ${price}
+          </h1>
+        </div>
         <button onClick={renderPaypalButtons}></button>
         <div ref={paypalRef}></div>
       </div>
       <style jsx>{`
         .dom-ready {
           background-color: red;
+        }
+        h1 {
+          margin: 0;
+          font-family: cubano, sans-serif;
+        }
+        .cprice {
+          background: linear-gradient(rgb(24, 255, 32), rgb(22, 175, 2));
+          -webkit-background-clip: text;
+          color: transparent;
         }
       `}</style>
     </>
