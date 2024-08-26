@@ -125,6 +125,9 @@ const StudyPage = ({ params }) => {
                 howManySales={course.howManySales}
                 courseId={course._id}
                 coursePrice={course.price}
+                howManySectionsFinished={
+                  course.sections.filter((s) => s.finished).length
+                }
               />
             </div>
           )}

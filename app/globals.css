@@ -9,6 +9,7 @@
   --blue: #4c00ff;
   --blueDark: #04019e;
   --grey: rgb(93, 91, 91);
+  --greyLight: rgb(175, 169, 169);
   --violet: #a20dff;
   --violeteDark: #8d0bd9;
   --green: #0dff2d;
@@ -84,6 +85,7 @@ a {
   margin-left: 1rem;
 }
 
+.tdlt { text-decoration: line-through; }
 .tdu { text-decoration: underline; }
 .tac { text-align: center; }
 .p5 { padding: 0.5rem; }
@@ -94,6 +96,7 @@ a {
 .cwhite { color: var(--white); }
 .cblue { color: var(--blue); }
 .cgrey { color: var(--grey); }
+.cgreylight { color: var(--greyLight); }
 .cred { color: var(--red); }
 .cviolet { color: var(--violet); }
 .cblue { color: var(--blue); }
