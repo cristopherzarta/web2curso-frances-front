@@ -23,8 +23,8 @@ const CourseCard = ({ course }) => {
           style={{
             boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
             marginRight: "1rem",
-            width: `${15 * 1.77}rem`,
-            height: `15rem`,
+            width: `${12 * 1.77}rem`,
+            height: `12rem`,
             overflow: "hidden",
           }}
         >
@@ -48,7 +48,7 @@ const CourseCard = ({ course }) => {
         .card-container {
           flex-direction: column;
           background-color: var(--white);
-          width: ${15 * 1.77 + "rem"};
+          width: ${12 * 1.77 + "rem"};
           border-radius: 0.5rem;
           overflow: hidden;
           box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
