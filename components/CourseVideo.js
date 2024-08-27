@@ -35,7 +35,7 @@ const CourseVideo = ({
   //console.log({couldWatch})
   return (
     <div
-      className="df aic jcc mt20 br5 "
+      className="df aic jcc br5 "
       style={{
         overflow: "hidden",
         width: "100%",

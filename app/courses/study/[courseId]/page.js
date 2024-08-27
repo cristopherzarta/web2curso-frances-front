@@ -17,6 +17,8 @@ const StudyPage = ({ params }) => {
   const courseId = params.courseId;
   const [course, setCourse] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
+  const [openedSection, setOpenedSection] = useState(0);
+
   console.log({ course });
 
   const handleRefund = async () => {
@@ -74,40 +76,75 @@ const StudyPage = ({ params }) => {
     <>
       <Header />
       <Container>
-        <div className="df aic">
+        <div className="df sections-and-video-container">
           <div
-            className="df fdc"
-            style={{ height: "100vh", backgroundColor: "var(--blackDark)" }}
+            className="df fdc sections-container "
+            style={{
+              height: "100vh",
+              backgroundColor: "var(--black)",
+              width: "95%",
+              margin: "0 auto",
+            }}
           >
             <h3 className="p10"> SECCIONES del CURSO </h3>
-            <div className="df fdc">
-              {course?.sections?.map((section) => (
-                <div className="df fdc" key={section.name}>
+            <div className="df fdc" style={{ width: "100%" }}>
+              {course?.sections?.map((section, index) => (
+                <div
+                  className="df fdc cursorp"
+                  key={section.name}
+                  onClick={() =>
+                    setOpenedSection(openedSection === index ? 1000 : index)
+                  }
+                >
                   <div
-                    className="p10 mb5"
-                    style={{ backgroundColor: "var(--black)" }}
+                    className=" df aic jcsb p10 mb5"
+                    style={{
+                      backgroundColor: "var(--blackDark)",
+                      width: "100%",
+                    }}
                   >
-                    <span>{section.name}</span>
+                    <div className="df aic">
+                      <span className="mr5">{section.recordeAt}</span>
+                      <span className="mr5">{section.name}</span>
+                    </div>
+                    <div className="df fdc aife">
+                      <span className=" fs8 cgrey tar" title="Dia de grabación">
+                        {section.recordingday}
+                      </span>
+                      <span className=" fs8 cgrey tar " title="Duración">
+                        {section?.realDuration?.text}
+                      </span>
+                    </div>
                   </div>
-                  <div className="mb5">
-                    {section.videos.map((video, index) => (
-                      <CourseSectionVideo
-                        key={video.title}
-                        index={index}
-                        video={video}
-                        setSelectedVideo={setSelectedVideo}
-                        isAuthenticated={isAuthenticated}
-                        hasBoughtTheCourse={course.hasBoughtTheCourse}
-                        isSelected={selectedVideo.title === video.title}
-                      />
-                    ))}
-                  </div>
+                  {openedSection === index && (
+                    <div className="mb5">
+                      {section.videos.map((video, index) => (
+                        <CourseSectionVideo
+                          key={video.title}
+                          index={index}
+                          video={video}
+                          setSelectedVideo={setSelectedVideo}
+                          isAuthenticated={isAuthenticated}
+                          hasBoughtTheCourse={course.hasBoughtTheCourse}
+                          isSelected={selectedVideo.title === video.title}
+                        />
+                      ))}
+                      {section.videos.length === 0 && (
+                        <p style={{ padding: "0 1rem" }}>
+                          Section en edición 🛠...
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
           </div>
           {!!selectedVideo && (
-            <div className="p10" style={{ height: "100vh", minWidth: "70%" }}>
+            <div
+              className="video-section-container"
+              style={{ minWidth: "100%" }}
+            >
               <div className="df aic jcsb">
                 <h3>{selectedVideo?.title}</h3>
                 {!!course.capture_id && course.hasBoughtTheCourse && (
@@ -133,6 +170,38 @@ const StudyPage = ({ params }) => {
           )}
         </div>
       </Container>
+      <style jsx>
+        {`
+          .video-section-container {
+            padding: 0 1rem 0 2rem;
+            width: 100%;
+          }
+
+          .sections-and-video-container {
+            width: 70%;
+          }
+
+          .sections-container {
+            min-width: 15rem;
+          }
+
+          @media screen (min-width: 800px) {
+            .sections-container {
+              min-width: 20rem;
+            }
+          }
+          @media screen (max-width: 800px) {
+            .sections-and-video-container {
+              flex-direction: column-reverse;
+              width: 100%;
+            }
+
+            .video-section-container {
+              padding: 0 1rem 2rem 1rem;
+            }
+          }
+        `}
+      </style>
     </>
   );
 };

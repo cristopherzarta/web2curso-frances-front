@@ -40,7 +40,7 @@ const CourseCard = ({ course }) => {
 
         <div className="df fdc card-body ">
           <h3 className="cwhite mv5 ">{name}</h3>
-          <h1 className="cgrey m0">{description}</h1>
+          <h1 className="cgreylight m0">{description}</h1>
         </div>
       </div>
 
