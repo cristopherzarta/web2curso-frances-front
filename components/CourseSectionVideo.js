@@ -19,18 +19,30 @@ const CourseSectionVideo = ({
   //console.log({ couldWatch });
 
   return (
-    <div className="df aic p5 cursorp" onClick={() => setSelectedVideo(video)}>
+    <div
+      className="df aic jcsb p5 cursorp"
+      onClick={(e) => {
+        e.stopPropagation()
+        setSelectedVideo(video)}}
+    >
+      <div className="df aic fs8">
+        <span className="mr5">{video.emoji}</span>
+        <span>{video.title.slice(2, video.title.length)}</span>
+      </div>
       {couldWatch && (
         <i
           className={
-            "fa-solid fa-circle-play mh5" +
-            (isSelected ? " cgreen" : " cviolet")
+            "fa-solid fa-circle-play ml10" + (isSelected ? " cgreen" : " cviolet")
           }
         />
       )}
-      {!couldWatch && <FontAwesomeIcon icon={faLock} className={"cred mh5"} />}
-
-      <span style={{ fontSize: "0.9rem" }}>{video.title}</span>
+      {!couldWatch && (
+        <i
+          className={
+            "fa-solid fa-lock cred ml10" + (isSelected ? " cgreen" : " cred")
+          }
+        />
+      )}
     </div>
   );
 };
