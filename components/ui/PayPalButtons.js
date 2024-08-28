@@ -85,7 +85,7 @@ const PayPalButtons = ({ coursePrice, price, courseId, setCourse }) => {
   return (
     <>
       <div
-        className="df mt20 mb20 cblack"
+        className="df aic mt20 mb20 cblack"
         style={{
           backgroundColor: "white",
           padding: "1rem",
