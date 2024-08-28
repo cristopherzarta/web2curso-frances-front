@@ -184,13 +184,13 @@ const StudyPage = ({ params }) => {
             minwidth: 15rem;
           }
 
-          @media screen (min-width: 800px) {
+          @media (min-width: 800px) {
             .sections-container {
               minwidth: 20rem;
             }
           }
 
-          @media screen (max-width: 800px) {
+          @media (max-width: 800px) {
             .sections-and-video-container {
               flex-direction: column-reverse;
               width: 100%;
