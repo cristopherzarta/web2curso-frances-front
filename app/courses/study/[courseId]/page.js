@@ -172,7 +172,7 @@ const StudyPage = ({ params }) => {
       </Container>
       <style jsx>
         {`
-          video-section-container {
+          .video-section-container {
             padding: 0 1rem 0 2rem;
             width: 100%;
           }
@@ -181,22 +181,21 @@ const StudyPage = ({ params }) => {
             width: 70%;
           }
           .sections-container {
-            minwidth: 15rem;
+            min-width: 15rem;
           }
 
           @media (min-width: 800px) {
             .sections-container {
-              minwidth: 20rem;
+              min-width: 20rem;
             }
           }
-
           @media (max-width: 800px) {
             .sections-and-video-container {
               flex-direction: column-reverse;
               width: 100%;
             }
 
-            video-section-container {
+            .video-section-container {
               padding: 0 1rem 2rem 1rem;
             }
           }
