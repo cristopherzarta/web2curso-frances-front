@@ -87,7 +87,6 @@ const StudyPage = ({ params }) => {
               margin: "0 auto",
             }}
           >
-            <h3 className="p10"> SECCIONES del CURSO </h3>
             <div className="df fdc" style={{ width: "100%" }}>
               {course?.sections?.map((section, index) => (
                 <div
