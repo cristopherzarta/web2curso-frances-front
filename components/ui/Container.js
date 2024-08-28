@@ -8,7 +8,7 @@ export const Container = ({ children }) => {
           max-width: 70vw;
           margin: 0 auto;
         }
-        @media screen (max-width: 800px) {
+        @media (max-width: 800px) {
           .main-container {
             max-width: 100vw;
           }
