@@ -66,6 +66,10 @@ a {
 .aic {
   align-items: center;
 }
+
+.aife {
+  align-items: flex-end;
+}
 .jcc {
   justify-content: center;
 }

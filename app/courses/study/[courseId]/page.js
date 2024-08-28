@@ -83,6 +83,7 @@ const StudyPage = ({ params }) => {
               height: "100vh",
               backgroundColor: "var(--black)",
               width: "95%",
+              minWidth: "20rem",
               margin: "0 auto",
             }}
           >
@@ -172,7 +173,7 @@ const StudyPage = ({ params }) => {
       </Container>
       <style jsx>
         {`
-          .video-section-container {
+          video-section-container {
             padding: 0 1rem 0 2rem;
             width: 100%;
           }
@@ -180,23 +181,23 @@ const StudyPage = ({ params }) => {
           .sections-and-video-container {
             width: 70%;
           }
-
           .sections-container {
-            min-width: 15rem;
+            minwidth: 15rem;
           }
 
           @media screen (min-width: 800px) {
             .sections-container {
-              min-width: 20rem;
+              minwidth: 20rem;
             }
           }
+
           @media screen (max-width: 800px) {
             .sections-and-video-container {
               flex-direction: column-reverse;
               width: 100%;
             }
 
-            .video-section-container {
+            video-section-container {
               padding: 0 1rem 2rem 1rem;
             }
           }
