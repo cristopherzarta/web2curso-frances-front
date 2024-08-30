@@ -27,7 +27,7 @@ const CourseSectionVideo = ({
     >
       <div className="df aic fs8">
         <span className="mr5">{video.emoji}</span>
-        <span>{video.title.slice(2, video.title.length)}</span>
+        <span>{video.title.slice(0,video.title.length)}</span>
       </div>
       {couldWatch && (
         <i
