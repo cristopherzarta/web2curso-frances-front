@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 //const ContentSecPolicy = `default-src 'self' ka-f.fontawesome.com localhost:4000 web-curso-frances.azurewebsites.net webcursosfrances.blob.core.windows.net; script-src 'self' 'unsafe-eval' kit.fontawesome.com; style-src 'self' 'unsafe-inline' *.fontawesome.com fonts.googleapis.com; font-src 'self' fonts.googleapis.com ka-f.fontawesome.com;  kit.fontawesome.com; img-src 'self' data:`;
 
+const ContentSecPolicy = `default-src 'self' www.sandbox.paypal.com ka-f.fontawesome.com localhost:4000 web-curso-frances.azurewebsites.net webcursosfrances.blob.core.windows.net; script-src 'self' www.paypal.com kit.fontawesome.com 'unsafe-inline' 'unsafe-eval' ; style-src 'self' 'unsafe-inline' *.fontawesome.com ; font-src 'self' ka-f.fontawesome.com; img-src 'self' data:`;
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -17,13 +19,13 @@ const nextConfig = {
     ],
   },
 
-  /*async headers() {
+  async headers() {
     return [
       {
         source: "/(.*)",
         headers: [
           {
-            key: "X-DNS-Prefetch-Control",
+            key: "X-DNS-Prefectch-Control",
             value: "on",
           },
           {
@@ -37,7 +39,7 @@ const nextConfig = {
         ],
       },
     ];
-  },*/
+  },
 };
 
 export default nextConfig;
