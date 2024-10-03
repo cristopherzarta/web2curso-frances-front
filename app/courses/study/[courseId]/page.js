@@ -58,7 +58,7 @@ const StudyPage = ({ params }) => {
         .then(({ ok, data }) => {
           if (ok) {
             setCourse(data);
-            setSelectedVideo(data.sections[0].videos[1]);
+            setSelectedVideo(data.sections[0].videos[0]);
           }
         })
         .catch((err) => {
