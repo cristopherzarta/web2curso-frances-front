@@ -21,9 +21,9 @@ const CourseVideo = ({
   //console.log({ hasBoughtTheCourse });
 
   //const today = Date.now();
-  let price = Math.min(coursePrice, 70 + 2 * howManySectionsFinished);
+  let price = Math.min(coursePrice, 80 + 2 * howManySectionsFinished);
 
-  const offerExpirationDate = new Date(2024, 9, 31, 17, 12);
+  const offerExpirationDate = new Date(2025, 10, 31, 17, 12);
 
   if (isPast(offerExpirationDate)) {
     price = coursePrice;
