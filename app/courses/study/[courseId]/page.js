@@ -153,6 +153,7 @@ const StudyPage = ({ params }) => {
                   </Button>
                 )}
               </div>
+
               <CourseVideo
                 videoUrl={selectedVideo.videoUrl}
                 isAuthenticated={isAuthenticated}
